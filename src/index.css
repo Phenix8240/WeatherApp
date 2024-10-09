@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+}
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  /* background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; */
+}
+/* index.css or global.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-image: url('./assets/default.jpg');  */
+}

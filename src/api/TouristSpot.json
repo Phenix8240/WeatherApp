@@ -1,0 +1,961 @@
+{
+  "Kolkata": {
+    "id": 1,
+    "description": "A vibrant city known for its colonial architecture, cultural heritage, and vibrant street life.",
+    "coordinates": {
+      "latitude": 22.5726,
+      "longitude": 88.3639
+    },
+    "favorable_weather": ["Winter", "Autumn"],
+    "best_time_to_visit": ["November", "February"],
+    "local_and_cultural_events": ["Durga Puja", "Kolkata International Film Festival"],
+    "famous_food": ["Rasgulla", "Kachori", "Puchka", "Macher Jhol"],
+    "natural_tourist_spots": ["Hooghly River", "Maidan", "Vidyasagar Setu"],
+    "nearby_hotels": [
+      {
+        "name": "The Oberoi Grand",
+        "address": "15, Jawaharlal Nehru Road, Kolkata",
+        "contact": "+91-33-2249-2323",
+        "rating": 4.8,
+        "amenities": ["Luxury", "Free Wi-Fi", "Spa"],
+        "website": "https://www.oberoihotels.com/hotels-in-kolkata/",
+        "image_url": "https://www.oberoihotels.com/images/oberoi-grand-kolkata.jpg"
+      },
+      {
+        "name": "Taj Bengal",
+        "address": "34B, Belvedere Road, Alipore, Kolkata",
+        "contact": "+91-33-6612-3456",
+        "rating": 4.7,
+        "amenities": ["Luxury", "Pool", "Gym"],
+        "website": "https://www.tajhotels.com/en-in/taj/taj-bengal-kolkata/",
+        "image_url": "https://www.tajhotels.com/images/taj-bengal.jpg"
+      },
+      {
+        "name": "ITC Sonar",
+        "address": "1, JBS Haldane Avenue, Kolkata",
+        "contact": "+91-33-2345-4545",
+        "rating": 4.6,
+        "amenities": ["Luxury", "Free Wi-Fi", "Business Center"],
+        "website": "https://www.itchotels.com/hotels/kolkata/itc-sonar.html",
+        "image_url": "https://www.itchotels.com/images/itc-sonar.jpg"
+      },
+      {
+        "name": "The Park Kolkata",
+        "address": "17, Park Street, Kolkata",
+        "contact": "+91-33-2249-2971",
+        "rating": 4.5,
+        "amenities": ["Luxury", "Nightlife", "Free Wi-Fi"],
+        "website": "https://www.theparkhotels.com/kolkata/",
+        "image_url": "https://www.theparkhotels.com/images/the-park-kolkata.jpg"
+      },
+      {
+        "name": "HCI (Hotel Chandralok International)",
+        "address": "23, Chowringhee Road, Kolkata",
+        "contact": "+91-33-2249-2121",
+        "rating": 4.4,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelchandralok.com/",
+        "image_url": "http://www.hotelchandralok.com/images/hci.jpg"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Victoria Memorial",
+        "description": "A grand monument dedicated to Queen Victoria, offering a glimpse into Kolkata's colonial past.",
+        "coordinates": {
+          "latitude": 22.5468,
+          "longitude": 88.3495
+        },
+        "opening_hours": "10:00 AM - 6:00 PM",
+        "entry_fee": "₹20",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.7,
+        "contact_info": {
+          "phone": "+91-33-2223-0850"
+        },
+        "facilities": ["Museum", "Photography"],
+        "website": "https://victoriamemorial-cal.org/",
+        "image_url": "https://victoriamemorial-cal.org/images/victoria-memorial.jpg"
+      },
+      {
+        "name": "Howrah Bridge",
+        "description": "An iconic suspension bridge over the Hooghly River, offering stunning views of the river and city.",
+        "coordinates": {
+          "latitude": 22.5850,
+          "longitude": 88.3250
+        },
+        "opening_hours": "Open 24 hours",
+        "entry_fee": "Free",
+        "best_time_to_visit": "Evening",
+        "average_rating": 4.8,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Sightseeing"],
+        "website": "https://en.wikipedia.org/wiki/Howrah_Bridge",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Howrah_Bridge_Colombo.jpg/800px-Howrah_Bridge_Colombo.jpg"
+      },
+      {
+        "name": "Indian Museum",
+        "description": "The oldest and largest museum in India, showcasing a diverse range of artifacts and exhibitions.",
+        "coordinates": {
+          "latitude": 22.5697,
+          "longitude": 88.3360
+        },
+        "opening_hours": "10:00 AM - 6:00 PM",
+        "entry_fee": "₹50",
+        "best_time_to_visit": "Afternoon",
+        "average_rating": 4.6,
+        "contact_info": {
+          "phone": "+91-33-2252-1087"
+        },
+        "facilities": ["Museum", "Photography"],
+        "website": "http://indianmuseumkolkata.org/",
+        "image_url": "http://indianmuseumkolkata.org/images/indian-museum.jpg"
+      },
+      {
+        "name": "Science City",
+        "description": "A large science park and museum featuring interactive exhibits and displays on science and technology.",
+        "coordinates": {
+          "latitude": 22.5541,
+          "longitude": 88.3400
+        },
+        "opening_hours": "9:00 AM - 8:00 PM",
+        "entry_fee": "₹100",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.5,
+        "contact_info": {
+          "phone": "+91-33-2430-4052"
+        },
+        "facilities": ["Interactive Exhibits", "Children's Activities"],
+        "website": "https://www.sciencecitykolkata.org.in/",
+        "image_url": "https://www.sciencecitykolkata.org.in/images/science-city.jpg"
+      },
+      {
+        "name": "Alambazar",
+        "description": "A cultural and historical site with ancient temples and local markets.",
+        "coordinates": {
+          "latitude": 22.6550,
+          "longitude": 88.3790
+        },
+        "opening_hours": "8:00 AM - 7:00 PM",
+        "entry_fee": "Free",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.4,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Local Markets", "Temples"],
+        "website": "https://en.wikipedia.org/wiki/Alambazar",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Alambazar_Station.JPG/800px-Alambazar_Station.JPG"
+      },
+      {
+        "name": "Eden Gardens",
+        "description": "One of the most famous cricket stadiums in the world, hosting international and domestic cricket matches.",
+        "coordinates": {
+          "latitude": 22.5612,
+          "longitude": 88.3430
+        },
+        "opening_hours": "9:00 AM - 5:00 PM",
+        "entry_fee": "₹100",
+        "best_time_to_visit": "Match Days",
+        "average_rating": 4.7,
+        "contact_info": {
+          "phone": "+91-33-2216-6777"
+        },
+        "facilities": ["Cricket Matches", "Tours"],
+        "website": "https://en.wikipedia.org/wiki/Eden_Gardens",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Eden_Gardens_Stadium.jpg/800px-Eden_Gardens_Stadium.jpg"
+      }
+    ],
+    "image_library": [
+      
+    ]
+  },
+  "Darjeeling": {
+    "id": 2,
+    "description": "A picturesque hill station known for its tea gardens, scenic views, and colonial architecture.",
+    "coordinates": {
+      "latitude": 27.0350,
+      "longitude": 88.2620
+    },
+    "favorable_weather": ["Summer", "Autumn"],
+    "best_time_to_visit": ["March", "June"],
+    "local_and_cultural_events": ["Darjeeling Carnival", "Teej Festival"],
+    "famous_food": ["Darjeeling Tea", "Mommy", "Thukpa", "Churpee"],
+    "natural_tourist_spots": ["Tiger Hill", "Batasia Loop", "Himalayan Mountaineering Institute"],
+    "nearby_hotels": [
+      {
+        "name": "The Elgin",
+        "address": "18, H.D. Lama Road, Darjeeling",
+        "contact": "+91-354-225-4346",
+        "rating": 4.8,
+        "amenities": ["Luxury", "Free Wi-Fi", "Spa"],
+        "website": "http://www.elginhotels.com/",
+        "image_url": "https://www.elginhotels.com/images/the-elgin.jpg"
+      },
+      {
+        "name": "Hotel Sinclairs",
+        "address": "31/1, Gandhi Road, Darjeeling",
+        "contact": "+91-354-225-4181",
+        "rating": 4.7,
+        "amenities": ["Comfortable Stay", "Restaurant", "Free Wi-Fi"],
+        "website": "http://www.sinclairshotels.com/darjeeling/",
+        "image_url": "http://www.sinclairshotels.com/darjeeling/images/hotel-sinclairs.jpg"
+      },
+      {
+        "name": "Hotel Mount View",
+        "address": "1, Dr. Zakir Hussain Road, Darjeeling",
+        "contact": "+91-354-225-2929",
+        "rating": 4.6,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelmountview.com/",
+        "image_url": "http://www.hotelmountview.com/images/hotel-mount-view.jpg"
+      },
+      {
+        "name": "The Windamere",
+        "address": "12, Richmond Hill, Darjeeling",
+        "contact": "+91-354-225-4854",
+        "rating": 4.5,
+        "amenities": ["Luxury", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.windamere.com/",
+        "image_url": "http://www.windamere.com/images/the-windamere.jpg"
+      },
+      {
+        "name": "Hotel Dekeva",
+        "address": "34/1, Dr. Zakir Hussain Road, Darjeeling",
+        "contact": "+91-354-225-2756",
+        "rating": 4.4,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.dekeva.com/",
+        "image_url": "http://www.dekeva.com/images/hotel-dekeva.jpg"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Tiger Hill",
+        "description": "Famous for its stunning sunrise view over the Kanchenjunga peak.",
+        "coordinates": {
+          "latitude": 27.0420,
+          "longitude": 88.2620
+        },
+        "opening_hours": "4:00 AM - 6:00 AM",
+        "entry_fee": "₹50",
+        "best_time_to_visit": "Sunrise",
+        "average_rating": 4.9,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Photography", "Sightseeing"],
+        "website": "https://en.wikipedia.org/wiki/Tiger_Hill",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Tiger_Hill_Darjeeling.jpg/800px-Tiger_Hill_Darjeeling.jpg"
+      },
+      {
+        "name": "Batasia Loop",
+        "description": "A unique railway loop that offers panoramic views of Darjeeling and the surrounding mountains.",
+        "coordinates": {
+          "latitude": 27.0300,
+          "longitude": 88.2650
+        },
+        "opening_hours": "9:00 AM - 6:00 PM",
+        "entry_fee": "₹20",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.7,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Sightseeing", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Batasia_Loop",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Batasia_Loop_Darjeeling.jpg/800px-Batasia_Loop_Darjeeling.jpg"
+      },
+      {
+        "name": "Himalayan Mountaineering Institute",
+        "description": "A museum and training institute dedicated to mountaineering and the history of the Himalayas.",
+        "coordinates": {
+          "latitude": 27.0350,
+          "longitude": 88.2630
+        },
+        "opening_hours": "10:00 AM - 5:00 PM",
+        "entry_fee": "₹30",
+        "best_time_to_visit": "Afternoon",
+        "average_rating": 4.6,
+        "contact_info": {
+          "phone": "+91-354-225-4478"
+        },
+        "facilities": ["Museum", "Training"],
+        "website": "http://www.hmi.edu.in/",
+        "image_url": "http://www.hmi.edu.in/images/himalayan-mountaineering-institute.jpg"
+      },
+      {
+        "name": "Happy Valley Tea Estate",
+        "description": "One of the oldest tea estates in Darjeeling, offering tours and tastings of premium Darjeeling tea.",
+        "coordinates": {
+          "latitude": 27.0310,
+          "longitude": 88.2700
+        },
+        "opening_hours": "9:00 AM - 4:00 PM",
+        "entry_fee": "₹100",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.5,
+        "contact_info": {
+          "phone": "+91-354-225-2695"
+        },
+        "facilities": ["Tea Tasting", "Tour"],
+        "website": "https://www.happyvalleytea.com/",
+        "image_url": "https://www.happyvalleytea.com/images/happy-valley.jpg"
+      },
+      {
+        "name": "Darjeeling Zoo",
+        "description": "A well-maintained zoo featuring a variety of animals, including rare Himalayan species.",
+        "coordinates": {
+          "latitude": 27.0350,
+          "longitude": 88.2620
+        },
+        "opening_hours": "9:00 AM - 4:00 PM",
+        "entry_fee": "₹30",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.4,
+        "contact_info": {
+          "phone": "+91-354-225-4296"
+        },
+        "facilities": ["Animal Viewing", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Darjeeling_Zoo",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Darjeeling_Zoo.jpg/800px-Darjeeling_Zoo.jpg"
+      }
+    ], "image_library": [
+      
+    ]
+  },
+  "Sundarbans": {
+    "id": 3,
+    "description": "A unique mangrove forest and UNESCO World Heritage Site known for its rich biodiversity and the Royal Bengal Tiger.",
+    "coordinates": {
+      "latitude": 21.9665,
+      "longitude": 88.7839
+    },
+    "favorable_weather": ["Winter", "Autumn"],
+    "best_time_to_visit": ["November", "March"],
+    "local_and_cultural_events": ["Sundarbans Festival", "Tiger Festival"],
+    "famous_food": ["Fish Curry", "Rice", "Prawns"],
+    "natural_tourist_spots": ["Sundarbans National Park", "Sajnekhali Wildlife Sanctuary"],
+    "nearby_hotels": [
+      {
+        "name": "The Sundarban Resort",
+        "address": "Sundarbans, West Bengal",
+        "contact": "+91-33-2439-7829",
+        "rating": 4.8,
+        "amenities": ["Comfortable Stay", "Restaurant", "Nature Tours"],
+        "website": "http://www.sundarbanresort.com/",
+        "image_url": "https://gos3.ibcdn.com/fc71bb7074a011e58cdb0015c5f4277e.jfif"
+      },
+      {
+        "name": "Wild Life Resort",
+        "address": "Sundarbans, West Bengal",
+        "contact": "+91-33-2479-6745",
+        "rating": 4.7,
+        "amenities": ["Comfortable Stay", "Nature Tours", "Restaurant"],
+        "website": "http://www.wildliferesort.com/",
+        "image_url": "http://www.wildliferesort.com/images/wildlife-resort.jpg"
+      },
+      {
+        "name": "Royal Bengal Resort",
+        "address": "Sundarbans, West Bengal",
+        "contact": "+91-33-2458-9355",
+        "rating": 4.6,
+        "amenities": ["Comfortable Stay", "Nature Tours", "Free Wi-Fi"],
+        "website": "http://www.royalbengalresort.com/",
+        "image_url": "http://www.royalbengalresort.com/images/royal-bengal-resort.jpg"
+      },
+      {
+        "name": "Tiger Point Resort",
+        "address": "Sundarbans, West Bengal",
+        "contact": "+91-33-2476-7989",
+        "rating": 4.5,
+        "amenities": ["Comfortable Stay", "Nature Tours", "Restaurant"],
+        "website": "http://www.tigerpointresort.com/",
+        "image_url": "http://www.tigerpointresort.com/images/tiger-point-resort.jpg"
+      },
+      {
+        "name": "Sundarban Lodge",
+        "address": "Sundarbans, West Bengal",
+        "contact": "+91-33-2439-9605",
+        "rating": 4.4,
+        "amenities": ["Comfortable Stay", "Nature Tours", "Restaurant"],
+        "website": "http://www.sundarbanlodge.com/",
+        "image_url": "http://www.sundarbanlodge.com/images/sundarban-lodge.jpg"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Sundarbans National Park",
+        "description": "A vast mangrove forest known for its rich wildlife, including the Royal Bengal Tiger.",
+        "coordinates": {
+          "latitude": 21.9665,
+          "longitude": 88.7839
+        },
+        "opening_hours": "6:00 AM - 6:00 PM",
+        "entry_fee": "₹200",
+        "best_time_to_visit": "Winter",
+        "average_rating": 4.8,
+        "contact_info": {
+          "phone": "+91-33-2479-6745"
+        },
+        "facilities": ["Wildlife Viewing", "Boat Safari"],
+        "website": "http://www.sundarban.gov.in/",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Sundarbans_National_Park.jpg/800px-Sundarbans_National_Park.jpg"
+      },
+      {
+        "name": "Sajnekhali Wildlife Sanctuary",
+        "description": "A wildlife sanctuary known for its rich birdlife and mangrove forests.",
+        "coordinates": {
+          "latitude": 21.9441,
+          "longitude": 88.7561
+        },
+        "opening_hours": "6:00 AM - 5:00 PM",
+        "entry_fee": "₹150",
+        "best_time_to_visit": "Winter",
+        "average_rating": 4.7,
+        "contact_info": {
+          "phone": "+91-33-2479-6745"
+        },
+        "facilities": ["Bird Watching", "Boat Safari"],
+        "website": "http://www.sundarban.gov.in/",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Sajnekhali_Wildlife_Sanctuary.jpg/800px-Sajnekhali_Wildlife_Sanctuary.jpg"
+      },
+      {
+        "name": "Sundarbans Watchtower",
+        "description": "A watchtower offering panoramic views of the mangrove forest and wildlife.",
+        "coordinates": {
+          "latitude": 21.9440,
+          "longitude": 88.7740
+        },
+        "opening_hours": "6:00 AM - 6:00 PM",
+        "entry_fee": "₹100",
+        "best_time_to_visit": "Winter",
+        "average_rating": 4.6,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Sightseeing", "Photography"],
+        "website": "http://www.sundarban.gov.in/",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Sundarbans_Watchtower.jpg/800px-Sundarbans_Watchtower.jpg"
+      }
+    ],
+    "image_library": [
+      
+    ]
+  },
+  "Kalimpong": {
+    "id": 4,
+    "description": "A serene hill station known for its picturesque views, Tibetan monasteries, and pleasant weather.",
+    "coordinates": {
+      "latitude": 27.0666,
+      "longitude": 88.6115
+    },
+    "favorable_weather": ["Spring", "Autumn"],
+    "best_time_to_visit": ["March", "October"],
+    "local_and_cultural_events": ["Buddha Jayanti", "Flower Festival"],
+    "famous_food": ["Thukpa", "Momos", "Churpi"],
+    "natural_tourist_spots": ["Kangchenjunga View", "Deolo Hill", "Rishop"],
+    "nearby_hotels": [
+      {
+        "name": "The Elgin Silver Oaks",
+        "address": "2nd Mile, Kurseong Road, Kalimpong",
+        "contact": "+91-353-255-5300",
+        "rating": 4.6,
+        "amenities": ["Luxury", "Free Wi-Fi", "Restaurant"],
+        "website": "https://www.elginhotels.com/silver-oaks/",
+        "image_url": "https://www.elginhotels.com/images/silver-oaks.jpg"
+      },
+      {
+        "name": "Hotel Hilltop",
+        "address": "Ward No. 5, Kalimpong",
+        "contact": "+91-353-255-4555",
+        "rating": 4.5,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelhilltopkalimpong.com/",
+        "image_url": "http://www.hotelhilltopkalimpong.com/images/hotel-hilltop.jpg"
+      },
+      {
+        "name": "Hotel Himalayan",
+        "address": "11th Mile, Kalimpong",
+        "contact": "+91-353-255-0444",
+        "rating": 4.4,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Parking"],
+        "website": "https://www.hotelhimalayankalimpong.com/",
+        "image_url": "https://www.hotelhimalayankalimpong.com/images/hotel-himalayan.jpg"
+      },
+      {
+        "name": "Kalimpong Park Hotel",
+        "address": "Chongtong, Kalimpong",
+        "contact": "+91-353-255-7890",
+        "rating": 4.3,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "https://www.kalimpongparkhotel.com/",
+        "image_url": "https://www.kalimpongparkhotel.com/images/park-hotel.jpg"
+      },
+      {
+        "name": "Delo Lake Resort",
+        "address": "Delo, Kalimpong",
+        "contact": "+91-353-255-1200",
+        "rating": 4.2,
+        "amenities": ["Luxury", "Free Wi-Fi", "Nature Views"],
+        "website": "https://www.delolakeresort.com/",
+        "image_url": "https://www.delolakeresort.com/images/delo-lake-resort.jpg"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Deolo Hill",
+        "description": "A popular spot offering panoramic views of the surrounding hills and valleys.",
+        "coordinates": {
+          "latitude": 27.0700,
+          "longitude": 88.6150
+        },
+        "opening_hours": "6:00 AM - 6:00 PM",
+        "entry_fee": "₹20",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.5,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Sightseeing"],
+        "website": "https://en.wikipedia.org/wiki/Deolo_Hill",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Deolo_Hill.jpg/800px-Deolo_Hill.jpg"
+      },
+      {
+        "name": "Zang Dhok Palri Phodang Monastery",
+        "description": "A significant Tibetan monastery known for its beautiful architecture and spiritual ambiance.",
+        "coordinates": {
+          "latitude": 27.0590,
+          "longitude": 88.6120
+        },
+        "opening_hours": "7:00 AM - 5:00 PM",
+        "entry_fee": "Free",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.7,
+        "contact_info": {
+          "phone": "+91-353-255-5511"
+        },
+        "facilities": ["Spiritual Tours"],
+        "website": "https://en.wikipedia.org/wiki/Zang_Dhok_Palri_Phodang",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Zang_Dhok_Palri_Phodang.jpg/800px-Zang_Dhok_Palri_Phodang.jpg"
+      },
+      {
+        "name": "Kalimpong Cactus Nursery",
+        "description": "A unique nursery showcasing a wide variety of cacti and succulents.",
+        "coordinates": {
+          "latitude": 27.0620,
+          "longitude": 88.6130
+        },
+        "opening_hours": "9:00 AM - 6:00 PM",
+        "entry_fee": "₹30",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.4,
+        "contact_info": {
+          "phone": "+91-353-255-3411"
+        },
+        "facilities": ["Nursery", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Kalimpong_Cactus_Nursery",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Kalimpong_Cactus_Nursery.jpg/800px-Kalimpong_Cactus_Nursery.jpg"
+      },
+      {
+        "name": "Tsomgo Lake",
+        "description": "A high-altitude lake known for its stunning beauty and tranquil surroundings.",
+        "coordinates": {
+          "latitude": 27.0400,
+          "longitude": 88.5800
+        },
+        "opening_hours": "6:00 AM - 6:00 PM",
+        "entry_fee": "₹50",
+        "best_time_to_visit": "Afternoon",
+        "average_rating": 4.6,
+        "contact_info": {
+          "phone": "+91-353-255-1911"
+        },
+        "facilities": ["Sightseeing", "Boating"],
+        "website": "https://en.wikipedia.org/wiki/Tsomgo_Lake",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Tsomgo_Lake.jpg/800px-Tsomgo_Lake.jpg"
+      },
+      {
+        "name": "Mangal Dham",
+        "description": "A sacred Hindu temple dedicated to Lord Krishna, known for its serene atmosphere.",
+        "coordinates": {
+          "latitude": 27.0600,
+          "longitude": 88.6100
+        },
+        "opening_hours": "8:00 AM - 6:00 PM",
+        "entry_fee": "Free",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.5,
+        "contact_info": {
+          "phone": "+91-353-255-5811"
+        },
+        "facilities": ["Spiritual Tours"],
+        "website": "https://en.wikipedia.org/wiki/Mangal_Dham",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Mangal_Dham.jpg/800px-Mangal_Dham.jpg"
+      },
+      {
+        "name": "Lepcha Heritage Museum",
+        "description": "A museum dedicated to preserving and showcasing the cultural heritage of the Lepcha community.",
+        "coordinates": {
+          "latitude": 27.0650,
+          "longitude": 88.6100
+        },
+        "opening_hours": "10:00 AM - 5:00 PM",
+        "entry_fee": "₹20",
+        "best_time_to_visit": "Afternoon",
+        "average_rating": 4.3,
+        "contact_info": {
+          "phone": "+91-353-255-8811"
+        },
+        "facilities": ["Museum", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Lepcha_Heritage_Museum",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Lepcha_Heritage_Museum.jpg/800px-Lepcha_Heritage_Museum.jpg"
+      }
+    ],
+    "image_library": []
+  },
+  "Jalpaiguri": {
+    "id": 5,
+    "description": "A gateway to North Bengal and the Himalayas, known for its lush green tea gardens, picturesque landscapes, and vibrant culture.",
+    "coordinates": {
+      "latitude": 26.5310,
+      "longitude": 88.7270
+    },
+    "favorable_weather": ["Winter", "Spring"],
+    "best_time_to_visit": ["November", "March"],
+    "local_and_cultural_events": ["Jalpaiguri Tea Festival", "Rath Yatra"],
+    "famous_food": ["Chop", "Singara", "Biryani"],
+    "natural_tourist_spots": ["Jorpokhri Wildlife Sanctuary", "Madhuban Park", "Kurseong"],
+    "nearby_hotels": [
+      {
+        "name": "Hotel Saluja",
+        "address": "P-247, Jail Road, Jalpaiguri",
+        "contact": "+91-3572-252-272",
+        "rating": 4.4,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelsaluja.com/",
+        "image_url": "http://www.hotelsaluja.com/images/hotel-saluja.jpg"
+      },
+      {
+        "name": "Hotel Royal Castle",
+        "address": "Ranishwar, Jalpaiguri",
+        "contact": "+91-3572-257-272",
+        "rating": 4.3,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Parking"],
+        "website": "http://www.hotelroyalcastle.com/",
+        "image_url": "http://www.hotelroyalcastle.com/images/royal-castle.jpg"
+      },
+      {
+        "name": "Hotel Siddhartha",
+        "address": "National Highway 27, Jalpaiguri",
+        "contact": "+91-3572-253-333",
+        "rating": 4.2,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelsiddhartha.com/",
+        "image_url": "http://www.hotelsiddhartha.com/images/hotel-siddhartha.jpg"
+      },
+      {
+        "name": "Hotel Moon Light",
+        "address": "Dharmashala, Jalpaiguri",
+        "contact": "+91-3572-254-555",
+        "rating": 4.1,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelmoonlight.com/",
+        "image_url": "http://www.hotelmoonlight.com/images/moon-light.jpg"
+      },
+      {
+        "name": "Hotel Bengal",
+        "address": "Old Club Road, Jalpaiguri",
+        "contact": "+91-3572-251-111",
+        "rating": 4.0,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelbengal.com/",
+        "image_url": "http://www.hotelbengal.com/images/hotel-bengal.jpg"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Jorpokhri Wildlife Sanctuary",
+        "description": "A wildlife sanctuary known for its diverse flora and fauna, including the rare Himalayan black bear.",
+        "coordinates": {
+          "latitude": 26.5590,
+          "longitude": 88.7430
+        },
+        "opening_hours": "6:00 AM - 6:00 PM",
+        "entry_fee": "₹50",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.6,
+        "contact_info": {
+          "phone": "+91-3572-258-789"
+        },
+        "facilities": ["Wildlife Tours", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Jorpokhri_Wildlife_Sanctuary",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Jorpokhri_Wildlife_Sanctuary.jpg/800px-Jorpokhri_Wildlife_Sanctuary.jpg"
+      },
+      {
+        "name": "Madhuban Park",
+        "description": "A well-maintained park offering a peaceful environment and beautiful garden views.",
+        "coordinates": {
+          "latitude": 26.5290,
+          "longitude": 88.7300
+        },
+        "opening_hours": "8:00 AM - 6:00 PM",
+        "entry_fee": "₹20",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.5,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Picnic Area", "Walking Trails"],
+        "website": "https://en.wikipedia.org/wiki/Madhuban_Park",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Madhuban_Park.jpg/800px-Madhuban_Park.jpg"
+      },
+      {
+        "name": "Kurseong",
+        "description": "A charming hill station nearby, known for its pleasant climate and scenic beauty.",
+        "coordinates": {
+          "latitude": 26.5310,
+          "longitude": 88.7300
+        },
+        "opening_hours": "Open 24 hours",
+        "entry_fee": "Free",
+        "best_time_to_visit": "Anytime",
+        "average_rating": 4.7,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Sightseeing", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Kurseong",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Kurseong.jpg/800px-Kurseong.jpg"
+      },
+      {
+        "name": "Samsing",
+        "description": "A picturesque village known for its tea gardens and breathtaking views of the surrounding hills.",
+        "coordinates": {
+          "latitude": 26.5220,
+          "longitude": 88.6760
+        },
+        "opening_hours": "6:00 AM - 6:00 PM",
+        "entry_fee": "₹30",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.4,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Tea Gardens", "Sightseeing"],
+        "website": "https://en.wikipedia.org/wiki/Samsing",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Samsing.jpg/800px-Samsing.jpg"
+      },
+      {
+        "name": "Buxa Fort",
+        "description": "A historical fort offering a glimpse into the region's past with panoramic views of the surrounding area.",
+        "coordinates": {
+          "latitude": 26.5880,
+          "longitude": 88.6480
+        },
+        "opening_hours": "8:00 AM - 5:00 PM",
+        "entry_fee": "₹20",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.3,
+        "contact_info": {
+          "phone": "+91-3572-258-989"
+        },
+        "facilities": ["Historical Tours", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Buxa_Fort",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Buxa_Fort.jpg/800px-Buxa_Fort.jpg"
+      },
+      {
+        "name": "Chilapata Forest",
+        "description": "A dense forest area known for its wildlife and natural beauty, perfect for nature enthusiasts.",
+        "coordinates": {
+          "latitude": 26.5420,
+          "longitude": 88.7430
+        },
+        "opening_hours": "6:00 AM - 6:00 PM",
+        "entry_fee": "₹40",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.6,
+        "contact_info": {
+          "phone": "+91-3572-258-676"
+        },
+        "facilities": ["Nature Trails", "Wildlife Viewing"],
+        "website": "https://en.wikipedia.org/wiki/Chilapata_Forest",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Chilapata_Forest.jpg/800px-Chilapata_Forest.jpg"
+      }
+    ],
+    "image_library": []
+  },
+  "Kochbihar": {
+    "id": 6,
+    "description": "A historic town known for its royal heritage, rich culture, and beautiful temples.",
+    "coordinates": {
+      "latitude": 26.3470,
+      "longitude": 89.4478
+    },
+    "favorable_weather": ["Winter", "Autumn"],
+    "best_time_to_visit": ["October", "March"],
+    "local_and_cultural_events": ["Kochbihar Rajbari Festival", "Baisakhi Mela"],
+    "famous_food": ["Macher Jhol", "Pakhala Bhata", "Murgir Jhol"],
+    "natural_tourist_spots": ["Kochbihar Palace", "Baneshwar Temple", "Madhabkunda"],
+    "nearby_hotels": [
+      {
+        "name": "Hotel Swagatam",
+        "address": "1, Rajbari Road, Kochbihar",
+        "contact": "+91-3552-221-222",
+        "rating": 4.2,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelswagatam.com/",
+        "image_url": "http://www.hotelswagatam.com/images/hotel-swagatam.jpg"
+      },
+      {
+        "name": "Hotel Dalmia",
+        "address": "Gosanimari, Kochbihar",
+        "contact": "+91-3552-223-333",
+        "rating": 4.0,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Parking"],
+        "website": "http://www.hoteldalmia.com/",
+        "image_url": "http://www.hoteldalmia.com/images/hotel-dalmia.jpg"
+      },
+      {
+        "name": "Hotel Rajmahal",
+        "address": "A Block, Kochbihar",
+        "contact": "+91-3552-224-444",
+        "rating": 4.1,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelrajmahal.com/",
+        "image_url": "http://www.hotelrajmahal.com/images/hotel-rajmahal.jpg"
+      },
+      {
+        "name": "Hotel Royal",
+        "address": "Bazar Road, Kochbihar",
+        "contact": "+91-3552-225-555",
+        "rating": 4.3,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelroyal.com/",
+        "image_url": "http://www.hotelroyal.com/images/hotel-royal.jpg"
+      },
+      {
+        "name": "Hotel Krishna",
+        "address": "C Block, Kochbihar",
+        "contact": "+91-3552-226-666",
+        "rating": 4.0,
+        "amenities": ["Comfortable Stay", "Free Wi-Fi", "Restaurant"],
+        "website": "http://www.hotelkrishna.com/",
+        "image_url": "http://www.hotelkrishna.com/images/hotel-krishna.jpg"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Kochbihar Palace",
+        "description": "A historic royal palace showcasing the grandeur of Kochbihar's princely past.",
+        "coordinates": {
+          "latitude": 26.3472,
+          "longitude": 89.4475
+        },
+        "opening_hours": "9:00 AM - 5:00 PM",
+        "entry_fee": "₹30",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.6,
+        "contact_info": {
+          "phone": "+91-3552-227-777"
+        },
+        "facilities": ["Historical Tours", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Kochbihar_Palace",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Kochbihar_Palace.jpg/800px-Kochbihar_Palace.jpg"
+      },
+      {
+        "name": "Baneshwar Temple",
+        "description": "A revered temple dedicated to Lord Shiva, known for its serene atmosphere and architectural beauty.",
+        "coordinates": {
+          "latitude": 26.3475,
+          "longitude": 89.4480
+        },
+        "opening_hours": "6:00 AM - 8:00 PM",
+        "entry_fee": "Free",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.5,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Temple Visits", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Baneshwar_Temple",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Baneshwar_Temple.jpg/800px-Baneshwar_Temple.jpg"
+      },
+      {
+        "name": "Madhabkunda",
+        "description": "A scenic spot with lush greenery and a peaceful ambiance, ideal for nature lovers.",
+        "coordinates": {
+          "latitude": 26.3480,
+          "longitude": 89.4470
+        },
+        "opening_hours": "8:00 AM - 6:00 PM",
+        "entry_fee": "₹20",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.4,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Picnic Area", "Nature Trails"],
+        "website": "https://en.wikipedia.org/wiki/Madhabkunda",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Madhabkunda.jpg/800px-Madhabkunda.jpg"
+      },
+      {
+        "name": "Rajbari Temple",
+        "description": "A historic temple complex with beautiful architecture and cultural significance.",
+        "coordinates": {
+          "latitude": 26.3468,
+          "longitude": 89.4482
+        },
+        "opening_hours": "6:00 AM - 8:00 PM",
+        "entry_fee": "Free",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.3,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Temple Visits", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Rajbari_Temple",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Rajbari_Temple.jpg/800px-Rajbari_Temple.jpg"
+      },
+      {
+        "name": "Gossain Mandir",
+        "description": "An ancient temple known for its historical significance and architectural beauty.",
+        "coordinates": {
+          "latitude": 26.3475,
+          "longitude": 89.4485
+        },
+        "opening_hours": "6:00 AM - 8:00 PM",
+        "entry_fee": "Free",
+        "best_time_to_visit": "Morning",
+        "average_rating": 4.4,
+        "contact_info": {
+          "phone": "N/A"
+        },
+        "facilities": ["Temple Visits", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Gossain_Mandir",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Gossain_Mandir.jpg/800px-Gossain_Mandir.jpg"
+      },
+      {
+        "name": "Cooch Behar Railway Museum",
+        "description": "A museum showcasing the history of railways in the region with various exhibits.",
+        "coordinates": {
+          "latitude": 26.3467,
+          "longitude": 89.4476
+        },
+        "opening_hours": "10:00 AM - 5:00 PM",
+        "entry_fee": "₹30",
+        "best_time_to_visit": "Afternoon",
+        "average_rating": 4.2,
+        "contact_info": {
+          "phone": "+91-3552-229-888"
+        },
+        "facilities": ["Historical Exhibits", "Photography"],
+        "website": "https://en.wikipedia.org/wiki/Cooch_Behar_Railway_Museum",
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Cooch_Behar_Railway_Museum.jpg/800px-Cooch_Behar_Railway_Museum.jpg"
+      }
+    ],
+    "image_library": []
+  }
+}

@@ -126,6 +126,18 @@
         "continent": "Asia",
         "population": "6.6 million"
     },
+    "KR": { 
+        "name": "South Korea", 
+        "countryCode": "KR",
+        "continent": "Asia",
+        "population": "51.7 million"
+    },
+    "KP": { 
+        "name": "North Korea", 
+        "countryCode": "KP",
+        "continent": "Asia",
+        "population": "25.9 million"
+    },
     "LA": { 
         "name": "Laos", 
         "countryCode": "LA",

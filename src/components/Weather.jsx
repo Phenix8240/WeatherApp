@@ -48,9 +48,28 @@ const Weather = () => {
     const [weatherData, setWeatherData] = useState(null);
     const [videoSrc, setVideoSrc] = useState(defaultVideo);
     const [videoKey, setVideoKey] = useState(Date.now());
-    const [currentTime, setCurrentTime] = useState('');
+    const [currentTime, setCurrentTime] = useState("");
 
     const allIcons = {
+        // "01d": clear_icon,  // Sunny (Day)
+        // "01n": clear_night_icon, // Clear Night
+        // "02d": cloud_icon,  // Few Clouds (Day)
+        // "02n": cloud_night_icon, // Few Clouds (Night)
+        // "03d": cloud_icon,  // Scattered Clouds
+        // "03n": cloud_night_icon,
+        // "04d": drizzle_icon,  // Broken Clouds
+        // "04n": drizzle_night_icon,
+        // "09d": drizzle_icon,  // Shower Rain
+        // "09n": rain_night_icon,
+        // "10d": rain_icon,  // Rain (Day)
+        // "10n": rain_night_icon, // Rain (Night)
+        // "11d": thunderstorm_icon,  // Thunderstorm
+        // "11n": thunderstorm_night_icon,
+        // "13d": snow_icon,  // Snow
+        // "13n": snow_night_icon
+        // ,
+        // "50d": mist_icon,  // Mist
+        // "50n": mist_night_icon,
         "01d": clear_icon,
         "01n": clear_icon,
         "02d": cloud_icon,
@@ -69,30 +88,32 @@ const Weather = () => {
 
     const getTimeOfDay = () => {
         const hour = new Date().getHours();
-        if (hour >= 6 && hour < 12) return "morning";
-        if (hour >= 12 && hour < 18) return "afternoon";
-        if (hour >= 18 && hour < 24) return "evening";
-        return "night";
+        
+        if (hour >= 4 && hour < 6) return "dawn";       // Early morning, before sunrise
+        if (hour >= 6 && hour < 9) return "morning";    // Morning
+        if (hour >= 9 && hour < 12) return "late morning"; // Late morning before noon
+        if (hour >= 12 && hour < 15) return "afternoon";  // Early afternoon
+        if (hour >= 15 && hour < 18) return "late afternoon"; // Late afternoon
+        if (hour >= 18 && hour < 20) return "evening";   // Evening
+        if (hour >= 20 && hour < 22) return "dusk";      // Dusk, after sunset
+        if (hour >= 22 && hour < 24) return "night";     // Nighttime
+        return "midnight";  // Midnight (0 - 4 AM)
     };
+    
 
     const getCountryInfo = (countryCode) => {
-        return countryList[countryCode] || { name: 'Unknown Country', countryCode: 'unknown', continent: 'unknown', population: 'unknown' };
+        return countryList[countryCode] || { name: "Unknown Country", countryCode: "unknown", continent: "unknown", population: "unknown" };
     };
 
     const getFlagURL = (countryCode) => {
-        try {
-            const url = `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
-            return url;
-        } catch (error) {
-            console.error("Error fetching flag data:", error);
-        }
+        return `https://flagcdn.com/w320/${countryCode.toLowerCase()}.png`;
     };
 
     const fetchAirQuality = async (lat, lon) => {
         const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${import.meta.env.VITE_APP_ID}`;
         const response = await fetch(url);
         const data = await response.json();
-        return data.list[0].main.aqi;
+        return data.list[0]?.main?.aqi || "N/A";
     };
 
     const fetchForecast = async (city) => {
@@ -103,8 +124,8 @@ const Weather = () => {
     };
 
     const search = async (city) => {
-        if (city === "") {
-            alert("Enter City Name");
+        if (!city.trim()) {
+            alert("Enter a valid city name");
             return;
         }
         try {
@@ -112,6 +133,11 @@ const Weather = () => {
             const response = await fetch(url);
             const data = await response.json();
             console.log(data);
+
+            if (data.cod !== 200) {
+                alert(data.message || "City not found");
+                return;
+            }
 
             const icon = allIcons[data.weather[0].icon] || clear_icon;
             const countryCode = data.sys.country;
@@ -122,7 +148,6 @@ const Weather = () => {
             const weatherDesc = data.weather[0].main.toLowerCase().trim();
             const timeOfDay = getTimeOfDay();
             const video = weatherVideos[`${weatherDesc}_${timeOfDay}`] || weatherVideos.default;
-            console.log("Video Source Set To:", video);
 
             setVideoSrc(video);
             setVideoKey(Date.now());
@@ -130,20 +155,20 @@ const Weather = () => {
             // Fetch air quality data
             const aqi = await fetchAirQuality(data.coord.lat, data.coord.lon);
 
-            // Fetch 7-day forecast
+            // Fetch forecast data
             const forecast = await fetchForecast(city);
 
             setWeatherData({
                 humidity: data.main.humidity,
                 windSpeed: data.wind.speed,
                 temp: Math.floor(data.main.temp),
-                pressure: data.main.sea_level ? Math.floor(data.main.sea_level) : 'N/A',
+                pressure: data.main.sea_level ? Math.floor(data.main.sea_level) : "N/A",
                 country: countryDetails.name || countryCode,
                 continent: countryDetails.continent,
                 flag: flagURL,
                 location: data.name,
-                des: data.weather[0].description,
-                visibility: data.visibility / 1000,
+                description: data.weather[0].description,
+                visibility: (data.visibility / 1000).toFixed(1) + " km",
                 sunrise: new Date(data.sys.sunrise * 1000).toLocaleTimeString(),
                 sunset: new Date(data.sys.sunset * 1000).toLocaleTimeString(),
                 icon: icon,
@@ -157,7 +182,7 @@ const Weather = () => {
 
     useEffect(() => {
         const updateTime = () => {
-            const time = new Date().toLocaleTimeString('en-GB', { hour12: false }); // 24-hour format
+            const time = new Date().toLocaleTimeString("en-GB", { hour12: false }); // 24-hour format
             setCurrentTime(time);
         };
         updateTime();
@@ -171,7 +196,7 @@ const Weather = () => {
 
     return (
         <div className='weather mt-6'>
-            
+
             <video key={videoKey} autoPlay loop muted className="bg-video">
                 <source src={videoSrc} type="video/mp4" />
                 Your browser does not support the video tag.
@@ -182,117 +207,90 @@ const Weather = () => {
             </div>
             {weatherData ? (
                 <>
-                    <img src={weatherData.icon} alt="" className='weather_icon' />
-                    <p className='temp'>{weatherData.temp}°C</p>
-                    <div className="location flex items-center justify-between">
-                        <p>{weatherData.location}, <span>{weatherData.country}, {weatherData.continent}</span></p>
-                        <img src={weatherData.flag} alt={`${weatherData.country} flag`} className="flag_icon w-10 h-8 ml-2" />
-                    </div>
+                    <div className="flex flex-col items-center text-center">
+                        <img src={weatherData.icon} alt="" className="weather_icon w-20 h-20 sm:w-24 sm:h-24" />
+                        <p className="temp text-3xl sm:text-4xl font-semibold">{weatherData.temp}°C</p>
 
-                    <div className="time_of_day text-xl text-center my-2">
-                        <p>Current Time: {currentTime} <span>{getTimeOfDay()}</span></p>
-                    </div>
-
-                    <div className="weather-data grid grid-cols-3 gap-4 mt-4">
-                        <div className="col bg-slate-400 rounded-md flex justify-center items-center">
-                            <img src={humidity_icon} alt="humidity" />
-                            <div>
-                                <p>{weatherData.humidity} %</p>
-                                <span>Humidity</span>
-                            </div>
-                        </div>
-                        <div className="col bg-slate-400 rounded-md flex justify-center items-center">
-                            <img src={wind_icon} alt="wind speed" />
-                            <div>
-                                <p>{weatherData.windSpeed} Km/h</p>
-                                <span>Wind Speed</span>
-                            </div>
-                        </div>
-                        <div className="col bg-slate-400 rounded-md flex justify-center items-center">
-                            <img src={wind_pressure_icon} alt="pressure" />
-                            <div>
-                                <p>{weatherData.pressure} mb</p>
-                                <span>Wind Pressure</span>
-                            </div>
-                        </div>
-                        <div className="col bg-slate-400 rounded-md flex justify-center items-center">
-                            <img src={sealevel_icon} alt="sea level" />
-                            <div>
-                                <p>{weatherData.pressure} MSL</p>
-                                <span>Sea Level</span>
-                            </div>
-                        </div>
-                        <div className="col bg-slate-400 rounded-md flex justify-center items-center">
-                            <img src={visibility_icon} alt="visibility" />
-                            <div>
-                                <p>{weatherData.visibility} Km</p>
-                                <span>Visibility</span>
-                            </div>
+                        <div className="location flex flex-wrap items-center justify-center text-lg mt-2">
+                            <p className="font-medium">
+                                {weatherData.location}, <span className="text-gray-300">{weatherData.country}, {weatherData.continent}</span>
+                            </p>
+                            <img src={weatherData.flag} alt={`${weatherData.country} flag`} className="flag_icon w-10 h-8 ml-2" />
                         </div>
 
-                        <div className="col bg-slate-400 rounded-md flex justify-center items-center">
-                            <img src={airQualityIcon} alt="air quality" />
-                            <div>
-                                <p>{weatherData.aqi}</p>
-                                <span>Air Quality</span>
-                            </div>
-                        </div>
-
-                        <div className="col bg-slate-400 rounded-md flex justify-center items-center">
-                            <img src={sunrise_icon} alt="sunrise" />
-                            <div>
-                                <p>{weatherData.sunrise}</p>
-                                <span>Sunrise</span>
-                            </div>
-                        </div>
-                        <div className="col bg-slate-400 rounded-md flex justify-center items-center">
-                            <img src={sunrise_icon} alt="sunset" />
-                            <div>
-                                <p>{weatherData.sunset}</p>
-                                <span>Sunset</span>
-                            </div>
+                        <div className="time_of_day text-lg text-center my-3">
+                            <p>Current Time: <span className="font-semibold">{currentTime}</span> <span>{getTimeOfDay()}</span></p>
                         </div>
                     </div>
 
+                    <div className="weather-data flex flex-wrap justify-center gap-4 mt-4">
+                        {[
+                            { icon: humidity_icon, value: `${weatherData.humidity} %`, label: "Humidity" },
+                            { icon: wind_icon, value: `${weatherData.windSpeed} Km/h`, label: "Wind Speed" },
+                            { icon: wind_pressure_icon, value: `${weatherData.pressure} mb`, label: "Wind Pressure" },
+                            { icon: sealevel_icon, value: `${weatherData.pressure} MSL`, label: "Sea Level" },
+                            { icon: visibility_icon, value: `${weatherData.visibility} Km`, label: "Visibility" },
+                            { icon: airQualityIcon, value: weatherData.aqi, label: "Air Quality" },
+                            { icon: sunrise_icon, value: weatherData.sunrise, label: "Sunrise" },
+                            { icon: sunrise_icon, value: weatherData.sunset, label: "Sunset" }
+                        ].map((data, index) => (
+                            <div key={index} className="bg-slate-400 rounded-md flex items-center p-3 w-40 sm:w-48 md:w-56">
+                                <img src={data.icon} alt={data.label} className="w-10 h-10 mr-2" />
+                                <div className="text-center">
+                                    <p className="font-semibold">{data.value}</p>
+                                    <span className="text-sm">{data.label}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+
+
+                    {/* Hourly Forecast Section */}
                     {/* Hourly Forecast Section */}
                     {/* Hourly Forecast Section */}
                     <div className="hourly-forecast mt-6">
                         <h1 className="text-2xl mb-4">Hourly Forecast</h1>
-                        <div className="w-[calc(6*6rem)] overflow-x-auto whitespace-nowrap scrollbar-hide">
-                            <div className="flex gap-2">
-                                {weatherData.forecast.slice(0, 12).map((hour, index) => (
-                                    <div
-                                        key={index}
-                                        className="hourly-card bg-gray-700 rounded-md w-20 flex-shrink-0 text-center p-2"
-                                    >
-                                        <p className="text-sm">
-                                            {new Date(hour.dt * 1000).toLocaleTimeString([], {
-                                                hour: '2-digit',
-                                                minute: '2-digit',
-                                            })}
-                                        </p>
-                                        <img
-                                            src={allIcons[hour.weather[0].icon]}
-                                            alt={hour.weather[0].description}
-                                            className="w-12 h-12 mx-auto"
-                                        />
-                                        <p className="text-sm">{Math.floor(hour.main.temp)}°C</p>
-                                    </div>
-                                ))}
-                            </div>
+                        <div className="flex flex-wrap justify-center gap-4">
+                            {weatherData.forecast.slice(0, 12).map((hour, index) => (
+                                <div
+                                    key={index}
+                                    className="hourly-card bg-gray-700 rounded-md w-24 sm:w-28 md:w-32 flex flex-col items-center p-3"
+                                >
+                                    <p className="text-sm">
+                                        {new Date(hour.dt * 1000).toLocaleTimeString([], {
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                        })}
+                                    </p>
+                                    <img
+                                        src={allIcons[hour.weather[0].icon]}
+                                        alt={hour.weather[0].description}
+                                        className="w-12 h-12"
+                                    />
+                                    <p className="text-sm font-semibold">{Math.floor(hour.main.temp)}°C</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
-
-
                     {/* 7-Day Forecast Section */}
-                    <div className="forecast flex flex-col gap-4 mt-6 w-full">
-                        <h1 className='text-2xl'>7 Days Forecast</h1>
-                        {weatherData.forecast.filter((item, index) => index % 8 === 0).map((day, index) => (
-                            <div key={index} className="forecast-day bg-gray-700 rounded-md p-2 flex flex-row justify-around items-center h-18">
-                                <p className="text-2xl md:text-base font-bold">{new Date(day.dt_txt).toLocaleDateString()}</p>
-                                <img src={allIcons[day.weather[0].icon]} alt={day.weather[0].description} className="w-12 h-12 md:w-16 md:h-16" />
-                                <p className="text-xl">{Math.floor(day.main.temp)}°C</p>
+                    <div className="forecast flex flex-col items-center gap-4 mt-6 w-full">
+                        <h1 className="text-2xl">7 Days Forecast</h1>
+                        {weatherData.forecast.filter((_, index) => index % 8 === 0).map((day, index) => (
+                            <div
+                                key={index}
+                                className="forecast-day bg-gray-700 rounded-md p-4 flex justify-between items-center w-full max-w-lg"
+                            >
+                                <p className="text-lg md:text-base font-bold">
+                                    {new Date(day.dt_txt).toLocaleDateString()}
+                                </p>
+                                <img
+                                    src={allIcons[day.weather[0].icon]}
+                                    alt={day.weather[0].description}
+                                    className="w-12 h-12 md:w-16 md:h-16"
+                                />
+                                <p className="text-xl font-semibold">{Math.floor(day.main.temp)}°C</p>
                             </div>
                         ))}
                     </div>

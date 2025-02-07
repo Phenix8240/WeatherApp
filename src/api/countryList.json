@@ -1,22 +1,284 @@
 
 {
-    "US": { 
-        "name": "United States", 
-        "countryCode": "US",
-        "continent": "North America",
-        "population": "331 million"
+    "AF": { 
+        "name": "Afghanistan", 
+        "countryCode": "AF",
+        "continent": "Asia",
+        "population": "40 million"
     },
-    "GB": { 
-        "name": "United Kingdom", 
-        "countryCode": "GB",
-        "continent": "Europe",
-        "population": "67 million"
+    "AM": { 
+        "name": "Armenia", 
+        "countryCode": "AM",
+        "continent": "Asia",
+        "population": "3 million"
     },
-    "ES": { 
-        "name": "Spain", 
-        "countryCode": "ES",
+    "AZ": { 
+        "name": "Azerbaijan", 
+        "countryCode": "AZ",
+        "continent": "Asia",
+        "population": "10 million"
+    },
+    "BH": { 
+        "name": "Bahrain", 
+        "countryCode": "BH",
+        "continent": "Asia",
+        "population": "1.5 million"
+    },
+    "BD": { 
+        "name": "Bangladesh", 
+        "countryCode": "BD",
+        "continent": "Asia",
+        "population": "170 million"
+    },
+    "BT": { 
+        "name": "Bhutan", 
+        "countryCode": "BT",
+        "continent": "Asia",
+        "population": "800,000"
+    },
+    "BN": { 
+        "name": "Brunei", 
+        "countryCode": "BN",
+        "continent": "Asia",
+        "population": "450,000"
+    },
+    "KH": { 
+        "name": "Cambodia", 
+        "countryCode": "KH",
+        "continent": "Asia",
+        "population": "17 million"
+    },
+    "CN": { 
+        "name": "China", 
+        "countryCode": "CN",
+        "continent": "Asia",
+        "population": "1.4 billion"
+    },
+    "CY": { 
+        "name": "Cyprus", 
+        "countryCode": "CY",
+        "continent": "Asia",
+        "population": "1.2 million"
+    },
+    "GE": { 
+        "name": "Georgia", 
+        "countryCode": "GE",
+        "continent": "Asia",
+        "population": "3.7 million"
+    },
+    "IN": { 
+        "name": "India", 
+        "countryCode": "IN",
+        "continent": "Asia",
+        "population": "1.4 billion"
+    },
+    "ID": { 
+        "name": "Indonesia", 
+        "countryCode": "ID",
+        "continent": "Asia",
+        "population": "273 million"
+    },
+    "IR": { 
+        "name": "Iran", 
+        "countryCode": "IR",
+        "continent": "Asia",
+        "population": "84 million"
+    },
+    "IQ": { 
+        "name": "Iraq", 
+        "countryCode": "IQ",
+        "continent": "Asia",
+        "population": "41 million"
+    },
+    "IL": { 
+        "name": "Israel", 
+        "countryCode": "IL",
+        "continent": "Asia",
+        "population": "9.5 million"
+    },
+    "JP": { 
+        "name": "Japan", 
+        "countryCode": "JP",
+        "continent": "Asia",
+        "population": "126 million"
+    },
+    "JO": { 
+        "name": "Jordan", 
+        "countryCode": "JO",
+        "continent": "Asia",
+        "population": "11 million"
+    },
+    "KZ": { 
+        "name": "Kazakhstan", 
+        "countryCode": "KZ",
+        "continent": "Asia",
+        "population": "19 million"
+    },
+    "KW": { 
+        "name": "Kuwait", 
+        "countryCode": "KW",
+        "continent": "Asia",
+        "population": "4.4 million"
+    },
+    "KG": { 
+        "name": "Kyrgyzstan", 
+        "countryCode": "KG",
+        "continent": "Asia",
+        "population": "6.6 million"
+    },
+    "LA": { 
+        "name": "Laos", 
+        "countryCode": "LA",
+        "continent": "Asia",
+        "population": "7.4 million"
+    },
+    "LB": { 
+        "name": "Lebanon", 
+        "countryCode": "LB",
+        "continent": "Asia",
+        "population": "6.7 million"
+    },
+    "MY": { 
+        "name": "Malaysia", 
+        "countryCode": "MY",
+        "continent": "Asia",
+        "population": "33 million"
+    },
+    "MV": { 
+        "name": "Maldives", 
+        "countryCode": "MV",
+        "continent": "Asia",
+        "population": "550,000"
+    },
+    "MN": { 
+        "name": "Mongolia", 
+        "countryCode": "MN",
+        "continent": "Asia",
+        "population": "3.3 million"
+    },
+    "MM": { 
+        "name": "Myanmar", 
+        "countryCode": "MM",
+        "continent": "Asia",
+        "population": "54 million"
+    },
+    "NP": { 
+        "name": "Nepal", 
+        "countryCode": "NP",
+        "continent": "Asia",
+        "population": "30 million"
+    },
+    "PK": { 
+        "name": "Pakistan", 
+        "countryCode": "PK",
+        "continent": "Asia",
+        "population": "231 million"
+    },
+    "PH": { 
+        "name": "Philippines", 
+        "countryCode": "PH",
+        "continent": "Asia",
+        "population": "113 million"
+    },
+    "QA": { 
+        "name": "Qatar", 
+        "countryCode": "QA",
+        "continent": "Asia",
+        "population": "3 million"
+    },
+    "SA": { 
+        "name": "Saudi Arabia", 
+        "countryCode": "SA",
+        "continent": "Asia",
+        "population": "35 million"
+    },
+    "SG": { 
+        "name": "Singapore", 
+        "countryCode": "SG",
+        "continent": "Asia",
+        "population": "5.9 million"
+    },
+
+
+
+
+    "AL": { 
+        "name": "Albania", 
+        "countryCode": "AL",
         "continent": "Europe",
-        "population": "47 million"
+        "population": "2.8 million"
+    },
+    "AD": { 
+        "name": "Andorra", 
+        "countryCode": "AD",
+        "continent": "Europe",
+        "population": "80,000"
+    },
+    "AT": { 
+        "name": "Austria", 
+        "countryCode": "AT",
+        "continent": "Europe",
+        "population": "9 million"
+    },
+    "BY": { 
+        "name": "Belarus", 
+        "countryCode": "BY",
+        "continent": "Europe",
+        "population": "9.3 million"
+    },
+    "BE": { 
+        "name": "Belgium", 
+        "countryCode": "BE",
+        "continent": "Europe",
+        "population": "11.7 million"
+    },
+    "BA": { 
+        "name": "Bosnia and Herzegovina", 
+        "countryCode": "BA",
+        "continent": "Europe",
+        "population": "3.2 million"
+    },
+    "BG": { 
+        "name": "Bulgaria", 
+        "countryCode": "BG",
+        "continent": "Europe",
+        "population": "6.8 million"
+    },
+    "HR": { 
+        "name": "Croatia", 
+        "countryCode": "HR",
+        "continent": "Europe",
+        "population": "3.9 million"
+    },
+    "CY": { 
+        "name": "Cyprus", 
+        "countryCode": "CY",
+        "continent": "Europe",
+        "population": "1.2 million"
+    },
+    "CZ": { 
+        "name": "Czech Republic", 
+        "countryCode": "CZ",
+        "continent": "Europe",
+        "population": "10.7 million"
+    },
+    "DK": { 
+        "name": "Denmark", 
+        "countryCode": "DK",
+        "continent": "Europe",
+        "population": "5.8 million"
+    },
+    "EE": { 
+        "name": "Estonia", 
+        "countryCode": "EE",
+        "continent": "Europe",
+        "population": "1.3 million"
+    },
+    "FI": { 
+        "name": "Finland", 
+        "countryCode": "FI",
+        "continent": "Europe",
+        "population": "5.5 million"
     },
     "FR": { 
         "name": "France", 
@@ -30,88 +292,710 @@
         "continent": "Europe",
         "population": "83 million"
     },
-    "CN": { 
-        "name": "China", 
-        "countryCode": "CN",
-        "continent": "Asia",
-        "population": "1.4 billion"
+    "GR": { 
+        "name": "Greece", 
+        "countryCode": "GR",
+        "continent": "Europe",
+        "population": "10.4 million"
     },
-    "JP": { 
-        "name": "Japan", 
-        "countryCode": "JP",
-        "continent": "Asia",
-        "population": "126 million"
+    "HU": { 
+        "name": "Hungary", 
+        "countryCode": "HU",
+        "continent": "Europe",
+        "population": "9.6 million"
     },
-    "KR": { 
-        "name": "South Korea", 
-        "countryCode": "KR",
-        "continent": "Asia",
-        "population": "51 million"
+    "IS": { 
+        "name": "Iceland", 
+        "countryCode": "IS",
+        "continent": "Europe",
+        "population": "370,000"
+    },
+    "IE": { 
+        "name": "Ireland", 
+        "countryCode": "IE",
+        "continent": "Europe",
+        "population": "5 million"
     },
     "IT": { 
         "name": "Italy", 
         "countryCode": "IT",
         "continent": "Europe",
-        "population": "60 million"
+        "population": "59 million"
     },
-    "PT": { 
-        "name": "Portugal", 
-        "countryCode": "PT",
+    "LV": { 
+        "name": "Latvia", 
+        "countryCode": "LV",
         "continent": "Europe",
-        "population": "10 million"
+        "population": "1.8 million"
     },
-    "RU": { 
-        "name": "Russia", 
-        "countryCode": "RU",
-        "continent": "Europe/Asia",
-        "population": "144 million"
+    "LT": { 
+        "name": "Lithuania", 
+        "countryCode": "LT",
+        "continent": "Europe",
+        "population": "2.7 million"
     },
-    "SA": { 
-        "name": "Saudi Arabia", 
-        "countryCode": "SA",
-        "continent": "Asia",
-        "population": "35 million"
+    "LU": { 
+        "name": "Luxembourg", 
+        "countryCode": "LU",
+        "continent": "Europe",
+        "population": "640,000"
     },
-    "TR": { 
-        "name": "Turkey", 
-        "countryCode": "TR",
-        "continent": "Europe/Asia",
-        "population": "84 million"
+    "MT": { 
+        "name": "Malta", 
+        "countryCode": "MT",
+        "continent": "Europe",
+        "population": "520,000"
     },
     "NL": { 
         "name": "Netherlands", 
         "countryCode": "NL",
         "continent": "Europe",
-        "population": "17 million"
+        "population": "17.5 million"
+    },
+    "PL": { 
+        "name": "Poland", 
+        "countryCode": "PL",
+        "continent": "Europe",
+        "population": "37.7 million"
+    },
+    "PT": { 
+        "name": "Portugal", 
+        "countryCode": "PT",
+        "continent": "Europe",
+        "population": "10.3 million"
+    },
+    "RO": { 
+        "name": "Romania", 
+        "countryCode": "RO",
+        "continent": "Europe",
+        "population": "19 million"
+    },
+    "RU": { 
+        "name": "Russia", 
+        "countryCode": "RU",
+        "continent": "Europe",
+        "population": "146.4 million"
+    },
+    "ES": { 
+        "name": "Spain", 
+        "countryCode": "ES",
+        "continent": "Europe",
+        "population": "47 million"
     },
     "SE": { 
         "name": "Sweden", 
         "countryCode": "SE",
         "continent": "Europe",
-        "population": "10 million"
+        "population": "10.4 million"
     },
-    "AU": { 
+    "CH": { 
+        "name": "Switzerland", 
+        "countryCode": "CH",
+        "continent": "Europe",
+        "population": "8.7 million"
+    },
+    "GB": { 
+        "name": "United Kingdom", 
+        "countryCode": "GB",
+        "continent": "Europe",
+        "population": "67 million"
+    },
+
+
+    
+        "CA": { 
+            "name": "Canada", 
+            "countryCode": "CA",
+            "continent": "North America",
+            "population": "38 million"
+        },
+        "US": { 
+            "name": "United States", 
+            "countryCode": "US",
+            "continent": "North America",
+            "population": "331 million"
+        },
+        "MX": { 
+            "name": "Mexico", 
+            "countryCode": "MX",
+            "continent": "North America",
+            "population": "126 million"
+        },
+        "GT": { 
+            "name": "Guatemala", 
+            "countryCode": "GT",
+            "continent": "North America",
+            "population": "18 million"
+        },
+        "BZ": { 
+            "name": "Belize", 
+            "countryCode": "BZ",
+            "continent": "North America",
+            "population": "400,000"
+        },
+        "SV": { 
+            "name": "El Salvador", 
+            "countryCode": "SV",
+            "continent": "North America",
+            "population": "6.5 million"
+        },
+        "HN": { 
+            "name": "Honduras", 
+            "countryCode": "HN",
+            "continent": "North America",
+            "population": "10 million"
+        },
+        "NI": { 
+            "name": "Nicaragua", 
+            "countryCode": "NI",
+            "continent": "North America",
+            "population": "6.8 million"
+        },
+        "CR": { 
+            "name": "Costa Rica", 
+            "countryCode": "CR",
+            "continent": "North America",
+            "population": "5.2 million"
+        },
+        "PA": { 
+            "name": "Panama", 
+            "countryCode": "PA",
+            "continent": "North America",
+            "population": "4.4 million"
+        },
+        "CU": { 
+            "name": "Cuba", 
+            "countryCode": "CU",
+            "continent": "North America",
+            "population": "11 million"
+        },
+        "DO": { 
+            "name": "Dominican Republic", 
+            "countryCode": "DO",
+            "continent": "North America",
+            "population": "11 million"
+        },
+        "HT": { 
+            "name": "Haiti", 
+            "countryCode": "HT",
+            "continent": "North America",
+            "population": "11 million"
+        },
+        "JM": { 
+            "name": "Jamaica", 
+            "countryCode": "JM",
+            "continent": "North America",
+            "population": "2.8 million"
+        },
+        "BS": { 
+            "name": "Bahamas", 
+            "countryCode": "BS",
+            "continent": "North America",
+            "population": "400,000"
+        },
+        "BB": { 
+            "name": "Barbados", 
+            "countryCode": "BB",
+            "continent": "North America",
+            "population": "280,000"
+        },
+        "TT": { 
+            "name": "Trinidad and Tobago", 
+            "countryCode": "TT",
+            "continent": "North America",
+            "population": "1.4 million"
+        },
+
+
+
+        "AR": { 
+            "name": "Argentina", 
+            "countryCode": "AR",
+            "continent": "South America",
+            "population": "45 million"
+        },
+        "BO": { 
+            "name": "Bolivia", 
+            "countryCode": "BO",
+            "continent": "South America",
+            "population": "12 million"
+        },
+        "BR": { 
+            "name": "Brazil", 
+            "countryCode": "BR",
+            "continent": "South America",
+            "population": "213 million"
+        },
+        "CL": { 
+            "name": "Chile", 
+            "countryCode": "CL",
+            "continent": "South America",
+            "population": "19 million"
+        },
+        "CO": { 
+            "name": "Colombia", 
+            "countryCode": "CO",
+            "continent": "South America",
+            "population": "51 million"
+        },
+        "EC": { 
+            "name": "Ecuador", 
+            "countryCode": "EC",
+            "continent": "South America",
+            "population": "18 million"
+        },
+        "GY": { 
+            "name": "Guyana", 
+            "countryCode": "GY",
+            "continent": "South America",
+            "population": "800,000"
+        },
+        "PY": { 
+            "name": "Paraguay", 
+            "countryCode": "PY",
+            "continent": "South America",
+            "population": "7 million"
+        },
+        "PE": { 
+            "name": "Peru", 
+            "countryCode": "PE",
+            "continent": "South America",
+            "population": "33 million"
+        },
+        "SR": { 
+            "name": "Suriname", 
+            "countryCode": "SR",
+            "continent": "South America",
+            "population": "600,000"
+        },
+        "UY": { 
+            "name": "Uruguay", 
+            "countryCode": "UY",
+            "continent": "South America",
+            "population": "3.5 million"
+        },
+        "VE": { 
+            "name": "Venezuela", 
+            "countryCode": "VE",
+            "continent": "South America",
+            "population": "28 million"
+        },
+
+
+
+
+        "AU": { 
         "name": "Australia", 
         "countryCode": "AU",
-        "continent": "Australia",
+        "continent": "Oceania",
+        "population": "26 million"
+    },
+    "NZ": { 
+        "name": "New Zealand", 
+        "countryCode": "NZ",
+        "continent": "Oceania",
+        "population": "5.1 million"
+    },
+    "PG": { 
+        "name": "Papua New Guinea", 
+        "countryCode": "PG",
+        "continent": "Oceania",
+        "population": "9 million"
+    },
+    "FJ": { 
+        "name": "Fiji", 
+        "countryCode": "FJ",
+        "continent": "Oceania",
+        "population": "900,000"
+    },
+    "SB": { 
+        "name": "Solomon Islands", 
+        "countryCode": "SB",
+        "continent": "Oceania",
+        "population": "700,000"
+    },
+    "VU": { 
+        "name": "Vanuatu", 
+        "countryCode": "VU",
+        "continent": "Oceania",
+        "population": "300,000"
+    },
+    "WS": { 
+        "name": "Samoa", 
+        "countryCode": "WS",
+        "continent": "Oceania",
+        "population": "200,000"
+    },
+    "KI": { 
+        "name": "Kiribati", 
+        "countryCode": "KI",
+        "continent": "Oceania",
+        "population": "120,000"
+    },
+    "TO": { 
+        "name": "Tonga", 
+        "countryCode": "TO",
+        "continent": "Oceania",
+        "population": "100,000"
+    },
+    "FM": { 
+        "name": "Micronesia", 
+        "countryCode": "FM",
+        "continent": "Oceania",
+        "population": "115,000"
+    },
+    "MH": { 
+        "name": "Marshall Islands", 
+        "countryCode": "MH",
+        "continent": "Oceania",
+        "population": "60,000"
+    },
+    "NR": { 
+        "name": "Nauru", 
+        "countryCode": "NR",
+        "continent": "Oceania",
+        "population": "10,000"
+    },
+    "PW": { 
+        "name": "Palau", 
+        "countryCode": "PW",
+        "continent": "Oceania",
+        "population": "18,000"
+    },
+    "TV": { 
+        "name": "Tuvalu", 
+        "countryCode": "TV",
+        "continent": "Oceania",
+        "population": "11,000"
+    },
+
+
+
+
+
+    "DZ": { 
+        "name": "Algeria", 
+        "countryCode": "DZ",
+        "continent": "Africa",
+        "population": "44 million"
+    },
+    "AO": { 
+        "name": "Angola", 
+        "countryCode": "AO",
+        "continent": "Africa",
+        "population": "33 million"
+    },
+    "BJ": { 
+        "name": "Benin", 
+        "countryCode": "BJ",
+        "continent": "Africa",
+        "population": "12 million"
+    },
+    "BW": { 
+        "name": "Botswana", 
+        "countryCode": "BW",
+        "continent": "Africa",
+        "population": "2.4 million"
+    },
+    "BF": { 
+        "name": "Burkina Faso", 
+        "countryCode": "BF",
+        "continent": "Africa",
+        "population": "21 million"
+    },
+    "BI": { 
+        "name": "Burundi", 
+        "countryCode": "BI",
+        "continent": "Africa",
+        "population": "12 million"
+    },
+    "CV": { 
+        "name": "Cabo Verde", 
+        "countryCode": "CV",
+        "continent": "Africa",
+        "population": "560,000"
+    },
+    "CM": { 
+        "name": "Cameroon", 
+        "countryCode": "CM",
+        "continent": "Africa",
+        "population": "27 million"
+    },
+    "CF": { 
+        "name": "Central African Republic", 
+        "countryCode": "CF",
+        "continent": "Africa",
+        "population": "5 million"
+    },
+    "TD": { 
+        "name": "Chad", 
+        "countryCode": "TD",
+        "continent": "Africa",
+        "population": "16 million"
+    },
+    "KM": { 
+        "name": "Comoros", 
+        "countryCode": "KM",
+        "continent": "Africa",
+        "population": "870,000"
+    },
+    "CG": { 
+        "name": "Congo", 
+        "countryCode": "CG",
+        "continent": "Africa",
+        "population": "5.5 million"
+    },
+    "CD": { 
+        "name": "Democratic Republic of the Congo", 
+        "countryCode": "CD",
+        "continent": "Africa",
+        "population": "92 million"
+    },
+    "CI": { 
+        "name": "Côte d'Ivoire", 
+        "countryCode": "CI",
+        "continent": "Africa",
+        "population": "27 million"
+    },
+    "DJ": { 
+        "name": "Djibouti", 
+        "countryCode": "DJ",
+        "continent": "Africa",
+        "population": "1 million"
+    },
+    "EG": { 
+        "name": "Egypt", 
+        "countryCode": "EG",
+        "continent": "Africa",
+        "population": "104 million"
+    },
+    "GQ": { 
+        "name": "Equatorial Guinea", 
+        "countryCode": "GQ",
+        "continent": "Africa",
+        "population": "1.4 million"
+    },
+    "ER": { 
+        "name": "Eritrea", 
+        "countryCode": "ER",
+        "continent": "Africa",
+        "population": "3.6 million"
+    },
+    "SZ": { 
+        "name": "Eswatini", 
+        "countryCode": "SZ",
+        "continent": "Africa",
+        "population": "1.2 million"
+    },
+    "ET": { 
+        "name": "Ethiopia", 
+        "countryCode": "ET",
+        "continent": "Africa",
+        "population": "120 million"
+    },
+    "GA": { 
+        "name": "Gabon", 
+        "countryCode": "GA",
+        "continent": "Africa",
+        "population": "2.3 million"
+    },
+    "GM": { 
+        "name": "Gambia", 
+        "countryCode": "GM",
+        "continent": "Africa",
+        "population": "2.5 million"
+    },
+    "GH": { 
+        "name": "Ghana", 
+        "countryCode": "GH",
+        "continent": "Africa",
+        "population": "32 million"
+    },
+    "GN": { 
+        "name": "Guinea", 
+        "countryCode": "GN",
+        "continent": "Africa",
+        "population": "13 million"
+    },
+    "GW": { 
+        "name": "Guinea-Bissau", 
+        "countryCode": "GW",
+        "continent": "Africa",
+        "population": "2 million"
+    },
+    "KE": { 
+        "name": "Kenya", 
+        "countryCode": "KE",
+        "continent": "Africa",
+        "population": "55 million"
+    },
+    "LS": { 
+        "name": "Lesotho", 
+        "countryCode": "LS",
+        "continent": "Africa",
+        "population": "2.2 million"
+    },
+    "LR": { 
+        "name": "Liberia", 
+        "countryCode": "LR",
+        "continent": "Africa",
+        "population": "5 million"
+    },
+    "LY": { 
+        "name": "Libya", 
+        "countryCode": "LY",
+        "continent": "Africa",
+        "population": "7 million"
+    },
+    "MG": { 
+        "name": "Madagascar", 
+        "countryCode": "MG",
+        "continent": "Africa",
+        "population": "28 million"
+    },
+    "MW": { 
+        "name": "Malawi", 
+        "countryCode": "MW",
+        "continent": "Africa",
+        "population": "19 million"
+    },
+    "ML": { 
+        "name": "Mali", 
+        "countryCode": "ML",
+        "continent": "Africa",
+        "population": "21 million"
+    },
+    "MR": { 
+        "name": "Mauritania", 
+        "countryCode": "MR",
+        "continent": "Africa",
+        "population": "4.7 million"
+    },
+    "MU": { 
+        "name": "Mauritius", 
+        "countryCode": "MU",
+        "continent": "Africa",
+        "population": "1.3 million"
+    },
+    "MA": { 
+        "name": "Morocco", 
+        "countryCode": "MA",
+        "continent": "Africa",
+        "population": "37 million"
+    },
+    "MZ": { 
+        "name": "Mozambique", 
+        "countryCode": "MZ",
+        "continent": "Africa",
+        "population": "32 million"
+    },
+    "NA": { 
+        "name": "Namibia", 
+        "countryCode": "NA",
+        "continent": "Africa",
+        "population": "2.6 million"
+    },
+    "NE": { 
+        "name": "Niger", 
+        "countryCode": "NE",
+        "continent": "Africa",
         "population": "25 million"
     },
-    "IN": { 
-        "name": "India", 
-        "countryCode": "IN",
-        "continent": "Asia",
-        "population": "1.3 billion"
-    },
-    "BR": { 
-        "name": "Brazil", 
-        "countryCode": "BR",
-        "continent": "South America",
+    "NG": { 
+        "name": "Nigeria", 
+        "countryCode": "NG",
+        "continent": "Africa",
         "population": "213 million"
+    },
+    "RW": { 
+        "name": "Rwanda", 
+        "countryCode": "RW",
+        "continent": "Africa",
+        "population": "13 million"
+    },
+    "ST": { 
+        "name": "São Tomé and Príncipe", 
+        "countryCode": "ST",
+        "continent": "Africa",
+        "population": "220,000"
+    },
+    "SN": { 
+        "name": "Senegal", 
+        "countryCode": "SN",
+        "continent": "Africa",
+        "population": "17 million"
+    },
+    "SC": { 
+        "name": "Seychelles", 
+        "countryCode": "SC",
+        "continent": "Africa",
+        "population": "99,000"
+    },
+    "SL": { 
+        "name": "Sierra Leone", 
+        "countryCode": "SL",
+        "continent": "Africa",
+        "population": "8 million"
+    },
+    "SO": { 
+        "name": "Somalia", 
+        "countryCode": "SO",
+        "continent": "Africa",
+        "population": "16 million"
     },
     "ZA": { 
         "name": "South Africa", 
         "countryCode": "ZA",
         "continent": "Africa",
-        "population": "59 million"
+        "population": "60 million"
+    },
+    "SS": { 
+        "name": "South Sudan", 
+        "countryCode": "SS",
+        "continent": "Africa",
+        "population": "11 million"
+    },
+    "SD": { 
+        "name": "Sudan", 
+        "countryCode": "SD",
+        "continent": "Africa",
+        "population": "45 million"
+    },
+    "TZ": { 
+        "name": "Tanzania", 
+        "countryCode": "TZ",
+        "continent": "Africa",
+        "population": "62 million"
+    },
+    "TG": { 
+        "name": "Togo", 
+        "countryCode": "TG",
+        "continent": "Africa",
+        "population": "8 million"
+    },
+    "TN": { 
+        "name": "Tunisia", 
+        "countryCode": "TN",
+        "continent": "Africa",
+        "population": "12 million"
+    },
+    "UG": { 
+        "name": "Uganda", 
+        "countryCode": "UG",
+        "continent": "Africa",
+        "population": "47 million"
+    },
+    "ZM": { 
+        "name": "Zambia", 
+        "countryCode": "ZM",
+        "continent": "Africa",
+        "population": "18 million"
+    },
+    "ZW": { 
+        "name": "Zimbabwe", 
+        "countryCode": "ZW",
+        "continent": "Africa",
+        "population": "15 million"
     }
+    
 }

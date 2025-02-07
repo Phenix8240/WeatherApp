@@ -1,20 +1,20 @@
-import React from 'react'
-import Weather from './components/Weather'
-// import WeatherTravel from './componets/WeatherTravel'
-// import CityInfo from './componets/CityInfo';
-
-// import WeatherFinder from './componets/WeatherFinder';
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Weather from './components/Weather';
+import LocationIntelligence from './components/LocationIntelligence';
+import BusinessFeatures from './components/BusinessFeatures';
 
 const App = () => {
-  return (
-    <div className='app'>
-      <Weather/>
-      {/* <WeatherTravel/> */}
-      {/* <CityInfo /> */}
-      {/* <WeatherFinder/> */}
-    </div>
-  )
-}
+    return (
+        <Router>
+            
+            <Routes>
+                <Route path="/" element={<Weather />} />
+                <Route path="/location" element={<LocationIntelligence />} />
+                <Route path="/business" element={<BusinessFeatures />} />
+            </Routes>
+        </Router>
+    );
+};
 
-export default App
+export default App;

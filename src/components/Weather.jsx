@@ -88,7 +88,7 @@ const Weather = () => {
 
     const getTimeOfDay = () => {
         const hour = new Date().getHours();
-        
+
         if (hour >= 4 && hour < 6) return "Dawn 🌅";       // Early morning, before sunrise
         if (hour >= 6 && hour < 9) return "Morning ☀️";    // Morning
         if (hour >= 9 && hour < 12) return "Late morning 🌞"; // Late morning before noon
@@ -99,8 +99,8 @@ const Weather = () => {
         if (hour >= 22 && hour < 24) return "Night 💫";     // Nighttime
         return "Midnight 😴";  // Midnight (0 - 4 AM)
     };
-    
-    
+
+
 
     const getCountryInfo = (countryCode) => {
         return countryList[countryCode] || { name: "Unknown Country", countryCode: "unknown", continent: "unknown", population: "unknown" };
@@ -210,46 +210,65 @@ const Weather = () => {
             {weatherData ? (
                 <>
                     <div className="flex flex-col items-center text-center">
-      <img 
-        src={weatherData.icon} 
-        alt="" 
-        className="
+                        <img
+                            src={weatherData.icon}
+                            alt=""
+                            className="
           weather_icon w-20 h-20 
           sm:w-24 sm:h-24 md:w-24 md:h-24 
           lg:w-32 lg:h-32 transition-all
-        " 
-      />
-      <p className="
+        "
+                        />
+                        <p className="
         temp text-3xl sm:text-4xl 
         md:text-4xl lg:text-5xl font-bold 
         text-blue-300 drop-shadow-lg
       ">
-        {weatherData.temp}°C
-      </p>
+                            {weatherData.temp}°C
+                        </p>
 
-      <div className="location flex flex-wrap items-center justify-center text-lg mt-2">
-        <p className="font-semibold text-white bg-gray-700 px-3 py-1 rounded-lg">
-          {weatherData.location},  
-          <span className="text-gray-300">
-             <span>  {weatherData.country}</span> ,  {weatherData.continent}
-          </span>
-        </p>
-        <img 
-          src={weatherData.flag} 
-          alt={`${weatherData.country} flag`} 
-          className="flag_icon w-10 h-8 ml-2 md:w-10 md:h-8 border border-gray-300 rounded-md" 
-        />
-      </div>
+                        <div className="location flex flex-wrap items-center justify-center text-lg mt-2">
+                            <p className="font-semibold text-white bg-gray-700 px-3 py-1 rounded-lg">
+                                {weatherData.location},
+                                <span className="text-gray-300">
+                                    <span>  {weatherData.country}</span> ,  {weatherData.continent}
+                                </span>
+                            </p>
+                            <img
+                                src={weatherData.flag}
+                                alt={`${weatherData.country} flag`}
+                                className="flag_icon w-10 h-8 ml-2 md:w-10 md:h-8 border border-gray-300 rounded-md"
+                            />
+                        </div>
 
-      <div className="time_of_day text-lg text-center my-3 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md">
-        <p className="font-semibold">
-          Current Time: 
-          <span className="font-bold ml-2">{currentTime}</span> 
-          <span className="italic ml-1">{getTimeOfDay()}</span>
-        </p>
-      </div>
-    </div>
-
+                        <div className="time_of_day text-lg text-center my-3 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md">
+                            <p className="font-semibold">
+                                Current Time:
+                                <span className="font-bold ml-2">{currentTime}</span>
+                                <span className="italic ml-1">{getTimeOfDay()}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="weather-data flex flex-wrap justify-center gap-4 mt-4">
+                        {[
+                            { icon: humidity_icon, value: `${weatherData.humidity} %`, label: "Humidity" },
+                            { icon: wind_icon, value: `${weatherData.windSpeed} Km/h`, label: "Wind Speed" },
+                            { icon: wind_pressure_icon, value: `${weatherData.pressure} mb`, label: "Wind Pressure" },
+                            { icon: sealevel_icon, value: `${weatherData.pressure} MSL`, label: "Sea Level" },
+                            { icon: visibility_icon, value: `${weatherData.visibility} Km`, label: "Visibility" },
+                            { icon: airQualityIcon, value: weatherData.aqi, label: "Air Quality" },
+                            { icon: sunrise_icon, value: weatherData.sunrise, label: "Sunrise" },
+                            { icon: sunrise_icon, value: weatherData.sunset, label: "Sunset" }
+                        ].map((data, index) => (
+                            <div key={index} className="bg-slate-400 rounded-md flex items-center p-3 w-40 sm:w-48 md:w-56">
+                                <img src={data.icon} alt={data.label} className="w-10 h-10 mr-2" />
+                                <div className="text-center">
+                                    <p className="font-semibold">{data.value}</p>
+                                    <span className="text-sm">{data.label}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
 
 
                     {/* Hourly Forecast Section */}
@@ -279,6 +298,7 @@ const Weather = () => {
                             ))}
                         </div>
                     </div>
+
 
                     {/* 7-Day Forecast Section */}
                     <div className="forecast flex flex-col items-center gap-4 mt-6 w-full">

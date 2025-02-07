@@ -195,7 +195,8 @@ const Weather = () => {
     }, []);
 
     return (
-        <div className='weather mt-6'>
+        <div className="weather mt-6 flex flex-col md:flex-row items-center justify-center gap-6 p-6 bg-gray-800 text-white rounded-2xl shadow-lg w-full max-w-5xl mx-auto">
+
 
             <video key={videoKey} autoPlay loop muted className="bg-video">
                 <source src={videoSrc} type="video/mp4" />

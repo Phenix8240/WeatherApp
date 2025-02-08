@@ -73,7 +73,58 @@
 
 
 
+const prompt = `Act as an expert business analyst, economic strategist, and travel consultant. Analyze the following real-time weather data:  
+${JSON.stringify(weatherData, null, 2)}.  
 
+### **1. Business Insights:**  
+   - Predict how current weather conditions (temperature, humidity, wind, precipitation) affect **different business sectors** (e.g., retail, agriculture, logistics, hospitality).  
+   - Identify **economic impacts**, such as how the weather might influence **consumer behavior, sales, supply chain disruptions, or service demands**.  
+   - Provide **data-driven recommendations** for businesses to adapt, such as:  
+     - **Retail:** Stocking seasonal products or adjusting pricing.  
+     - **Agriculture:** Crop protection strategies or irrigation adjustments.  
+     - **Transportation & Logistics:** Adapting delivery schedules for efficiency.  
+     - **Hospitality & Tourism:** Adjusting promotions based on climate trends.  
+   - Highlight **emerging business trends** that may arise due to the current weather conditions (e.g., increased demand for winter gear, summer beverages, or indoor activities).  
+   - Offer **strategies for seasonal adaptation** to help businesses prepare for the upcoming weather shifts.  
+
+### **2. Travel Insights:**  
+   - Assess how current weather conditions affect **transportation, tourism, and outdoor activities**.  
+   - Recommend **three locations within the country** that are ideal for a **two-day trip** based on the weather.  
+     - For each location:  
+       - Suggest **top tourist attractions** that align with the weather (e.g., indoor museums for rainy days, beaches for sunny weather).  
+       - Provide **customized travel itineraries**, including ideal activities for different traveler types (e.g., solo travelers, families, adventure seekers).  
+       - Include **local seasonal specialties** (e.g., must-try foods, cultural events, festivals).  
+   - Offer **realistic budgeting tips** for each location, considering factors like transportation costs, accommodation pricing, and local expenses.  
+   - Provide **safety tips**, including:  
+     - Health precautions for extreme temperatures (e.g., hydration strategies for heatwaves, layering tips for cold weather).  
+     - Best times for safe travel (avoiding storms, floods, road closures).  
+     - Emergency contacts or services to be aware of.  
+   - Suggest **eco-friendly travel tips**, ensuring responsible tourism with minimal environmental impact.  
+
+
+### **3. Food & Nutrition Insights:**  
+   - Based on the weather and location, suggest **dietary habits** that suit the climate.  
+   - Recommend **seasonal vegetables, fruits, and food types** that are ideal for the given weather conditions.  
+     - **For hot weather:** Cooling foods like watermelon, cucumbers, citrus fruits, coconut water, and light meals.  
+     - **For cold weather:** Warming foods like root vegetables, nuts, protein-rich meals, and herbal teas.  
+     - **For humid/rainy conditions:** Immune-boosting foods like ginger, turmeric, leafy greens, and probiotics.  
+   - Advise on **cooking methods** that align with the climate (e.g., grilled and fresh foods for summer, warm stews for winter).  
+   - Suggest **hydration strategies** for extreme temperatures.  
+
+### **4. Agriculture & Farming Insights:**  
+   - Evaluate how the current weather conditions affect **crop growth, soil quality, and livestock health**.  
+   - Recommend **weather-resilient crops** that farmers should prioritize based on temperature, humidity, and precipitation.  
+   - Provide **adaptive farming techniques** such as:  
+     - **Drought Conditions:** Drip irrigation, mulching, drought-resistant crops (e.g., millets, sorghum).  
+     - **Excess Rainfall:** Raised-bed farming, improved drainage systems, flood-resistant crops (e.g., paddy, sugarcane).  
+     - **Cold Weather:** Greenhouse farming, heat-retaining soil techniques, cold-tolerant crops (e.g., cabbage, carrots).  
+   - Suggest **pest and disease control strategies** relevant to the weather conditions.  
+   - Provide **market insights** on which crops are expected to be in high demand due to the seasonal impact on supply chains.  
+
+
+
+
+Ensure all insights are **realistic, location-specific, data-driven, and actionable** to provide practical value for businesses and travelers alike.`;
 
 
 

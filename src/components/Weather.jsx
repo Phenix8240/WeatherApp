@@ -196,7 +196,7 @@ const Weather = () => {
     }, []);
 
     return (
-        <div className="weather mt-6 flex flex-col  items-center justify-center gap-6 p-6 bg-gray-800 text-white rounded-2xl shadow-lg w-full max-w-5xl mx-auto">
+        <div className="weather mt-12 flex flex-col  items-center justify-center gap-6 p-6 bg-gray-800 text-white rounded-2xl shadow-lg w-full max-w-5xl mx-auto">
 
 
             <video key={videoKey} autoPlay loop muted className="bg-video">
@@ -245,7 +245,7 @@ const Weather = () => {
                             <p className="font-semibold">
                                 Current Time:
                                 <span className="font-bold ml-2">{currentTime}</span>
-                                <span className="italic ml-1">{getTimeOfDay()}</span>
+                                <span className=" ml-1">{getTimeOfDay()}</span>
                             </p>
                         </div>
                     </div>
@@ -302,7 +302,7 @@ const Weather = () => {
 
                     {/* 7-Day Forecast Section */}
                     <div className="forecast flex flex-col items-center gap-4 mt-6 w-full">
-                        <h1 className="text-2xl">7 Days Forecast</h1>
+                        <h1 className="text-2xl">5 Days Forecast</h1>
                         {weatherData.forecast.filter((_, index) => index % 8 === 0).map((day, index) => (
                             <div
                                 key={index}

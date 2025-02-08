@@ -126,7 +126,25 @@ ${JSON.stringify(weatherData, null, 2)}.
 
 Ensure all insights are **realistic, location-specific, data-driven, and actionable** to provide practical value for businesses and travelers alike.`;
 
-
+ // "01d": clear_icon,  // Sunny (Day)
+        // "01n": clear_night_icon, // Clear Night
+        // "02d": cloud_icon,  // Few Clouds (Day)
+        // "02n": cloud_night_icon, // Few Clouds (Night)
+        // "03d": cloud_icon,  // Scattered Clouds
+        // "03n": cloud_night_icon,
+        // "04d": drizzle_icon,  // Broken Clouds
+        // "04n": drizzle_night_icon,
+        // "09d": drizzle_icon,  // Shower Rain
+        // "09n": rain_night_icon,
+        // "10d": rain_icon,  // Rain (Day)
+        // "10n": rain_night_icon, // Rain (Night)
+        // "11d": thunderstorm_icon,  // Thunderstorm
+        // "11n": thunderstorm_night_icon,
+        // "13d": snow_icon,  // Snow
+        // "13n": snow_night_icon
+        // ,
+        // "50d": mist_icon,  // Mist
+        // "50n": mist_night_icon,
 
 
 

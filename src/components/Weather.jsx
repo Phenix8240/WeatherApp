@@ -14,6 +14,8 @@ import sunrise_icon from "../assets/sunrise.png";
 import sealevel_icon from "../assets/sealevel.png";
 import airQualityIcon from "../assets/air-quality.jpg";
 import countryList from "../api/countryList.json";
+import timeZones from '../api/timeZones.json';
+
 
 // Import weather videos
 import clearMorning from "../assets/clear-sky.mp4";
@@ -27,6 +29,7 @@ import cloudyNight from "../assets/cloudy-sky.mp4";
 import rainVideo from "../assets/rain.mp4";
 import snowVideo from "../assets/snow.mp4";
 import defaultVideo from "../assets/default.mp4";
+import SearchBar from './Searchbar';
 
 // Weather videos mapping
 const weatherVideos = {
@@ -48,28 +51,11 @@ const Weather = () => {
     const [weatherData, setWeatherData] = useState(null);
     const [videoSrc, setVideoSrc] = useState(defaultVideo);
     const [videoKey, setVideoKey] = useState(Date.now());
-    const [currentTime, setCurrentTime] = useState("");
+    const [currentTime, setCurrentTime] = useState(""); // Indian Time
+    const [localTime, setLocalTime] = useState(""); // Searched City's Local Time
+    const [isIndianLocation, setIsIndianLocation] = useState(true);
 
     const allIcons = {
-        // "01d": clear_icon,  // Sunny (Day)
-        // "01n": clear_night_icon, // Clear Night
-        // "02d": cloud_icon,  // Few Clouds (Day)
-        // "02n": cloud_night_icon, // Few Clouds (Night)
-        // "03d": cloud_icon,  // Scattered Clouds
-        // "03n": cloud_night_icon,
-        // "04d": drizzle_icon,  // Broken Clouds
-        // "04n": drizzle_night_icon,
-        // "09d": drizzle_icon,  // Shower Rain
-        // "09n": rain_night_icon,
-        // "10d": rain_icon,  // Rain (Day)
-        // "10n": rain_night_icon, // Rain (Night)
-        // "11d": thunderstorm_icon,  // Thunderstorm
-        // "11n": thunderstorm_night_icon,
-        // "13d": snow_icon,  // Snow
-        // "13n": snow_night_icon
-        // ,
-        // "50d": mist_icon,  // Mist
-        // "50n": mist_night_icon,
         "01d": clear_icon,
         "01n": clear_icon,
         "02d": cloud_icon,
@@ -89,21 +75,24 @@ const Weather = () => {
     const getTimeOfDay = () => {
         const hour = new Date().getHours();
 
-        if (hour >= 4 && hour < 6) return "Dawn 🌅";       // Early morning, before sunrise
-        if (hour >= 6 && hour < 9) return "Morning ☀️";    // Morning
-        if (hour >= 9 && hour < 12) return "Late morning 🌞"; // Late morning before noon
-        if (hour >= 12 && hour < 15) return "Afternoon ☀️🔥";  // Early afternoon
-        if (hour >= 15 && hour < 18) return "Late afternoon 🌇"; // Late afternoon
-        if (hour >= 18 && hour < 20) return "Evening 🌆";   // Evening
-        if (hour >= 20 && hour < 22) return "Dusk 🌙";      // Dusk, after sunset
-        if (hour >= 22 && hour < 24) return "Night 💫";     // Nighttime
-        return "Midnight 😴";  // Midnight (0 - 4 AM)
+        if (hour >= 4 && hour < 6) return "Dawn 🌅";
+        if (hour >= 6 && hour < 9) return "Morning ☀️";
+        if (hour >= 9 && hour < 12) return "Late morning 🌞";
+        if (hour >= 12 && hour < 15) return "Afternoon ☀️🔥";
+        if (hour >= 15 && hour < 18) return "Late afternoon 🌇";
+        if (hour >= 18 && hour < 20) return "Evening 🌆";
+        if (hour >= 20 && hour < 22) return "Dusk 🌙";
+        if (hour >= 22 && hour < 24) return "Night 💫";
+        return "Midnight 😴";
     };
 
-
-
     const getCountryInfo = (countryCode) => {
-        return countryList[countryCode] || { name: "Unknown Country", countryCode: "unknown", continent: "unknown", population: "unknown" };
+        return countryList[countryCode] || { 
+            name: "Unknown Country", 
+            countryCode: "unknown", 
+            continent: "unknown", 
+            population: "unknown" 
+        };
     };
 
     const getFlagURL = (countryCode) => {
@@ -124,6 +113,85 @@ const Weather = () => {
         return data.list;
     };
 
+    const fetchLocalTime = async (countryCode) => {
+        try {
+            // Skip fetching local time for Indian locations
+            if (countryCode === 'IN') {
+                setIsIndianLocation(true);
+                return null;
+            }
+            
+            setIsIndianLocation(false);
+            
+            const timeZone = timeZones[countryCode] || 'UTC';
+            
+            // Instead of fetching time from API, we'll use the browser's built-in
+            // capabilities to continuously update the time
+            const time = new Date().toLocaleTimeString("en-GB", {
+                hour12: false,
+                hour: "2-digit",
+                minute: "2-digit",
+                second: "2-digit",
+                timeZone: timeZone
+            });
+            
+            return time;
+        } catch (error) {
+            console.error("Error getting local time:", error);
+            return "N/A";
+        }
+    };
+    
+    // Add this to your Weather component's state
+    const [timeInterval, setTimeInterval] = useState(null);
+    
+    // Modify your search function
+    const searchTime = async (city) => {
+        if (!city.trim()) {
+            alert("Enter a valid city name");
+            return;
+        }
+        
+        // Clear existing interval if any
+        if (timeInterval) {
+            clearInterval(timeInterval);
+        }
+        
+        try {
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
+            const response = await fetch(url);
+            const data = await response.json();
+    
+            if (data.cod !== 200) {
+                alert(data.message || "City not found");
+                return;
+            }
+    
+            const countryCode = data.sys.country;
+            
+            // Set up continuous time updates
+            const newInterval = setInterval(async () => {
+                const localTimeValue = await fetchLocalTime(countryCode);
+                setLocalTime(localTimeValue);
+            }, 1000);
+            
+            setTimeInterval(newInterval);
+            
+            // Rest of your existing code...
+        } catch (error) {
+            console.error("Error fetching weather data:", error);
+        }
+    };
+    
+    // Add cleanup in useEffect
+    useEffect(() => {
+        return () => {
+            if (timeInterval) {
+                clearInterval(timeInterval);
+            }
+        };
+    }, [timeInterval]);
+
     const search = async (city) => {
         if (!city.trim()) {
             alert("Enter a valid city name");
@@ -133,37 +201,29 @@ const Weather = () => {
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`;
             const response = await fetch(url);
             const data = await response.json();
-            console.log(data);
 
             if (data.cod !== 200) {
                 alert(data.message || "City not found");
                 return;
             }
 
-            const icon = allIcons[data.weather[0].icon] || clear_icon;
             const countryCode = data.sys.country;
             const countryDetails = getCountryInfo(countryCode);
             const flagURL = getFlagURL(countryCode);
 
-            // Determine background video based on weather description and time of day
-            const weatherDesc = data.weather[0].main.toLowerCase().trim();
-            const timeOfDay = getTimeOfDay();
-            const video = weatherVideos[`${weatherDesc}_${timeOfDay}`] || weatherVideos.default;
+            // Fetch local time only for non-Indian locations
+            const timezone = data.timezone / 3600; // Convert seconds to hours offset
+            const localTimeValue = await fetchLocalTime(countryCode, `Etc/GMT${timezone >= 0 ? "-" : "+"}${Math.abs(timezone)}`);
+            setLocalTime(localTimeValue);
 
-            setVideoSrc(video);
-            setVideoKey(Date.now());
-
-            // Fetch air quality data
+            // Fetch air quality and forecast
             const aqi = await fetchAirQuality(data.coord.lat, data.coord.lon);
-
-            // Fetch forecast data
             const forecast = await fetchForecast(city);
 
             setWeatherData({
                 humidity: data.main.humidity,
                 windSpeed: data.wind.speed,
                 temp: Math.floor(data.main.temp),
-                pressure: data.main.sea_level ? Math.floor(data.main.sea_level) : "N/A",
                 country: countryDetails.name || countryCode,
                 continent: countryDetails.continent,
                 flag: flagURL,
@@ -172,9 +232,11 @@ const Weather = () => {
                 visibility: (data.visibility / 1000).toFixed(1) + " km",
                 sunrise: new Date(data.sys.sunrise * 1000).toLocaleTimeString(),
                 sunset: new Date(data.sys.sunset * 1000).toLocaleTimeString(),
-                icon: icon,
+                icon: allIcons[data.weather[0].icon] || clear_icon,
                 aqi: aqi,
                 forecast: forecast,
+                pressure: data.main.pressure,
+                countryCode: countryCode,
             });
         } catch (error) {
             console.error("Error fetching weather data:", error);
@@ -182,12 +244,15 @@ const Weather = () => {
     };
 
     useEffect(() => {
-        const updateTime = () => {
-            const time = new Date().toLocaleTimeString("en-GB", { hour12: false }); // 24-hour format
+        const updateIndianTime = () => {
+            const time = new Date().toLocaleTimeString("en-GB", { 
+                hour12: false, 
+                timeZone: "Asia/Kolkata" 
+            });
             setCurrentTime(time);
         };
-        updateTime();
-        const intervalId = setInterval(updateTime, 1000);
+        updateIndianTime();
+        const intervalId = setInterval(updateIndianTime, 1000);
         return () => clearInterval(intervalId);
     }, []);
 
@@ -196,34 +261,23 @@ const Weather = () => {
     }, []);
 
     return (
-        <div className="weather mt-12 flex flex-col  items-center justify-center gap-6 p-6 bg-gray-800 text-white rounded-2xl shadow-lg w-full max-w-5xl mx-auto">
-
-
+        <div className="weather mt-12 flex flex-col items-center justify-center gap-6 p-6 bg-gray-800 text-white rounded-2xl shadow-lg w-full max-w-5xl mx-auto">
             <video key={videoKey} autoPlay loop muted className="bg-video">
                 <source src={videoSrc} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
-            <div className="search_bar">
-                <input type="text" ref={inputRef} placeholder='Enter City for Search' />
-                <img src={search_icon} alt="search" onClick={() => search(inputRef.current.value)} />
-            </div>
+
+            <SearchBar onSearch={search}/>
+
             {weatherData ? (
                 <>
                     <div className="flex flex-col items-center text-center">
                         <img
                             src={weatherData.icon}
                             alt=""
-                            className="
-          weather_icon w-20 h-20 
-          sm:w-24 sm:h-24 md:w-24 md:h-24 
-          lg:w-32 lg:h-32 transition-all
-        "
+                            className="weather_icon w-20 h-20 sm:w-24 sm:h-24 md:w-24 md:h-24 lg:w-32 lg:h-32 transition-all"
                         />
-                        <p className="
-        temp text-3xl sm:text-4xl 
-        md:text-4xl lg:text-5xl font-bold 
-        text-blue-300 drop-shadow-lg
-      ">
+                        <p className="temp text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-blue-300 drop-shadow-lg">
                             {weatherData.temp}°C
                         </p>
 
@@ -231,7 +285,7 @@ const Weather = () => {
                             <p className="font-semibold text-white bg-gray-700 px-3 py-1 rounded-lg">
                                 {weatherData.location},
                                 <span className="text-gray-300">
-                                    <span>  {weatherData.country}</span> ,  {weatherData.continent}
+                                    <span> {weatherData.country}</span> , {weatherData.continent}
                                 </span>
                             </p>
                             <img
@@ -242,20 +296,30 @@ const Weather = () => {
                         </div>
 
                         <div className="time_of_day text-lg text-center my-3 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md">
-                            <p className="font-semibold">
-                                Current Time:
-                                <span className="font-bold ml-2">{currentTime}</span>
-                                <span className=" ml-1">{getTimeOfDay()}</span>
-                            </p>
+                            {isIndianLocation ? (
+                                <p className="font-semibold">
+                                    🕒 Time: <span className="font-bold ml-2">{currentTime}</span> {getTimeOfDay()}
+                                </p>
+                            ) : (
+                                <>
+                                    <p className="font-semibold">
+                                        🕒 India Time: <span className="font-bold ml-2">{currentTime}</span> {getTimeOfDay()}
+                                    </p>
+                                    <p className="font-semibold">
+                                        🌎 {weatherData.location} Time: <span className="font-bold ml-2">{localTime}</span>
+                                    </p>
+                                </>
+                            )}
                         </div>
                     </div>
+
                     <div className="weather-data flex flex-wrap justify-center gap-4 mt-4">
                         {[
                             { icon: humidity_icon, value: `${weatherData.humidity} %`, label: "Humidity" },
                             { icon: wind_icon, value: `${weatherData.windSpeed} Km/h`, label: "Wind Speed" },
                             { icon: wind_pressure_icon, value: `${weatherData.pressure} mb`, label: "Wind Pressure" },
                             { icon: sealevel_icon, value: `${weatherData.pressure} MSL`, label: "Sea Level" },
-                            { icon: visibility_icon, value: `${weatherData.visibility} Km`, label: "Visibility" },
+                            { icon: visibility_icon, value: weatherData.visibility, label: "Visibility" },
                             { icon: airQualityIcon, value: weatherData.aqi, label: "Air Quality" },
                             { icon: sunrise_icon, value: weatherData.sunrise, label: "Sunrise" },
                             { icon: sunrise_icon, value: weatherData.sunset, label: "Sunset" }
@@ -270,10 +334,6 @@ const Weather = () => {
                         ))}
                     </div>
 
-
-                    {/* Hourly Forecast Section */}
-                    {/* Hourly Forecast Section */}
-                    {/* Hourly Forecast Section */}
                     <div className="hourly-forecast mt-6">
                         <h1 className="text-2xl mb-4">Hourly Forecast</h1>
                         <div className="flex flex-wrap justify-center gap-4">

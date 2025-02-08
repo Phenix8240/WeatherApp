@@ -15,6 +15,7 @@ const Navbar = () => {
         >
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo */}
+                
                 <Link
                     to="/"
                     className="font-serif text-2xl font-bold"
@@ -25,7 +26,7 @@ const Navbar = () => {
                         display: "inline-block",
                     }}
                 >
-                    WeatherApp
+                   Weathero
                 </Link>
 
                 {/* Hamburger Menu (Mobile) */}

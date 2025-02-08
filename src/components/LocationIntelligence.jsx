@@ -1,98 +1,105 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
+import {
+  WiDaySunny,
+  WiRain,
+  WiSnow,
+  WiThunderstorm,
+  WiCloudy,
+} from "react-icons/wi";
 
 const LocationIntelligence = () => {
-    const [userLocation, setUserLocation] = useState(null);
-    const [cities, setCities] = useState([]);
-    const [selectedCities, setSelectedCities] = useState([]);
-    const [weatherData, setWeatherData] = useState([]);
+  const [userLocation, setUserLocation] = useState(null);
+  const [weather, setWeather] = useState(null);
+  const API_KEY = import.meta.env.VITE_APP_ID;
 
-    // Auto-Detect User’s Location
-    useEffect(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    setUserLocation({ latitude, longitude });
-                },
-                (error) => {
-                    console.error("Error fetching location:", error);
-                }
-            );
-        } else {
-            console.error("Geolocation is not supported by this browser.");
-        }
-    }, []);
+  const indianCities = ["Srinagar","Delhi","Jaipur","Mumbai","Gangtok","Kolkata","Guwahati","Agartala","Bhubaneswar", "Bangalore", "Hyderabad", "Chennai"];
+  const worldCities = ["New York", "Moscow","London", "Tokyo", "Seoul", "Paris","Sydney", "Dubai"];
+  const [cityWeather, setCityWeather] = useState([]);
 
-    // Multi-City Weather Comparison
-    const fetchWeatherForCities = async (cityNames) => {
-        const weatherPromises = cityNames.map(async (city) => {
-            const response = await fetch(
-                `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_APP_ID}`
-            );
-            return response.json();
-        });
-        const weatherData = await Promise.all(weatherPromises);
-        setWeatherData(weatherData);
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ latitude, longitude });
+          fetchWeatherByCoords(latitude, longitude);
+        },
+        (error) => console.error("Error fetching location:", error)
+      );
+    }
+  }, []);
+
+  const fetchWeatherByCoords = async (lat, lon) => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+      );
+      const data = await response.json();
+      setWeather(data);
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchWeatherForCities = async () => {
+      const promises = [...indianCities, ...worldCities].map(async (city) => {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+        );
+        return response.json();
+      });
+      const results = await Promise.all(promises);
+      setCityWeather(results);
     };
+    fetchWeatherForCities();
+  }, []);
 
-    const handleCitySelection = (e) => {
-        const selected = Array.from(e.target.selectedOptions, (option) => option.value);
-        setSelectedCities(selected);
-    };
+  return (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold text-center mb-6">🌎 Location Intelligence & Weather Insights</h1>
 
-    const compareCities = () => {
-        fetchWeatherForCities(selectedCities);
-    };
-
-    return (
-        <div className="location-intelligence p-4">
-            <h1 className="text-2xl font-bold mb-4">Location Intelligence & Geo-Targeting</h1>
-
-            {/* Auto-Detect User’s Location */}
-            <div className="auto-detect mb-6">
-                <h2 className="text-xl font-semibold mb-2">Auto-Detect User’s Location</h2>
-                {userLocation ? (
-                    <p>
-                        Your location: Latitude {userLocation.latitude}, Longitude {userLocation.longitude}
-                    </p>
-                ) : (
-                    <p>Fetching your location...</p>
-                )}
-            </div>
-
-            {/* Multi-City Weather Comparison */}
-            <div className="multi-city mb-6">
-                <h2 className="text-xl font-semibold mb-2">Multi-City Weather Comparison</h2>
-                <select multiple onChange={handleCitySelection} className="border p-2 w-full">
-                    <option value="London">London</option>
-                    <option value="New York">New York</option>
-                    <option value="Tokyo">Tokyo</option>
-                    <option value="Paris">Paris</option>
-                </select>
-                <button onClick={compareCities} className="bg-blue-500 text-white p-2 mt-2">
-                    Compare Cities
-                </button>
-                <div className="weather-comparison mt-4">
-                    {weatherData.map((data, index) => (
-                        <div key={index} className="city-weather bg-slate-100 p-2 mb-2">
-                            <p>{data.name}: {Math.floor(data.main.temp)}°C</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-
-            {/* Satellite & Radar Weather Maps Integration */}
-            <div className="satellite-maps">
-                <h2 className="text-xl font-semibold mb-2">Satellite & Radar Weather Maps</h2>
-                <iframe
-                    src="https://www.windy.com/"
-                    width="100%"
-                    height="500"
-                    title="Satellite and Radar Weather Map"
-                ></iframe>
-            </div>
+      {weather && (
+        <div className="text-center mb-6">
+          <h2 className="text-2xl font-bold">📍 Your Current Location</h2>
+          <p className="text-lg">{weather.name}, {weather.sys.country}</p>
+          <p className="text-xl font-semibold">{weather.main.temp}°C</p>
         </div>
-    );
+      )}
+
+      <h2 className="text-2xl font-bold mt-8">Indian Cities</h2>
+      <div className="flex flex-wrap justify-center gap-6 p-4 overflow-x-auto">
+  {cityWeather
+    .filter(city => indianCities.includes(city.name))
+    .map((city, index) => (
+      <div
+        key={index}
+        className="w-72 bg-gradient-to-r from-blue-500 to-purple-600 text-white p-6 rounded-lg shadow-lg"
+      >
+        <h3 className="text-lg font-semibold">📍 {city.name}, {city.sys.country}</h3>
+        <p className="text-2xl font-bold">🌡️ {city.main.temp}°C</p>
+        <p className="text-sm">Feels Like: {city.main.feels_like}°C</p>
+        <p className="text-sm">Humidity: {city.main.humidity}%</p>
+        <p className="text-sm">Wind Speed: {city.wind.speed} m/s</p>
+      </div>
+    ))}
+</div>
+
+
+      <h2 className="text-2xl font-bold mt-8">🌍 World Cities</h2>
+      <div className="flex flex-wrap justify-center gap-6 p-4 overflow-x-auto">
+        {cityWeather.filter(city => worldCities.includes(city.name)).map((city, index) => (
+          <div key={index} className="w-72 bg-gradient-to-r from-green-400 to-blue-500 text-white p-6 rounded-lg shadow-lg">
+            <h3 className="text-lg font-semibold">📍 {city.name}, {city.sys.country}</h3>
+            <p className="text-2xl font-bold">🌡️ {city.main.temp}°C</p>
+            <p className="text-sm">Feels Like: {city.main.feels_like}°C</p>
+            <p className="text-sm">Humidity: {city.main.humidity}%</p>
+            <p className="text-sm">Wind Speed: {city.wind.speed} m/s</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default LocationIntelligence;

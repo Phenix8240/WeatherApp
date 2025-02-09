@@ -1,19 +1,22 @@
 import { useState, useEffect } from "react";
 import { WiDaySunny, WiRain, WiSnow, WiThunderstorm, WiCloudy } from "react-icons/wi"; // Weather icons
-import { FaBusinessTime, FaPlane, FaSeedling, FaUtensils } from "react-icons/fa"; // Business, Travel, Agriculture, Food icons
+import { FaPlane } from "react-icons/fa"; // Travel icon
+import { ToastContainer, toast } from "react-toastify"; // Toast notifications
+import "react-toastify/dist/ReactToastify.css"; // Toast styles
 
 const Insights = () => {
     const [weather, setWeather] = useState(null);
-    const [businessInsights, setBusinessInsights] = useState([]);
     const [travelInsights, setTravelInsights] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
     const API_KEY = "AIzaSyCGaiXt_OsH8HD1D-H_P25dBMm9QBp0UgY"; // Replace with your Gemini API key
 
     useEffect(() => {
-        getUserLocation();
+        // Request location permission on page load
+        requestLocationPermission();
     }, []);
 
-    // 📌 Fetch user location
-    const getUserLocation = () => {
+    // 📌 Request location permission
+    const requestLocationPermission = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -21,10 +24,14 @@ const Insights = () => {
                     console.log("User location:", latitude, longitude);
                     fetchWeather(latitude, longitude);
                 },
-                (error) => console.error("❌ Error getting location:", error)
+                (error) => {
+                    console.error("❌ Error getting location:", error);
+                    toast.error("Please enable location access to use this feature.");
+                }
             );
         } else {
             console.error("❌ Geolocation is not supported by this browser.");
+            toast.error("Geolocation is not supported by your browser.");
         }
     };
 
@@ -45,20 +52,19 @@ const Insights = () => {
             console.log("✅ Weather Data:", data);
 
             setWeather(data);
-            generateInsights(data); // 🔹 Call insights function after getting weather
         } catch (error) {
             console.error("❌ Error fetching weather:", error);
+            toast.error("Failed to fetch weather data. Please try again.");
         }
     };
 
     // 📌 Generate insights using Gemini API
     const generateInsights = async (weatherData) => {
-        console.log("📝 Generating insights for weather:", weatherData);
+        setIsLoading(true);
+        toast.info("Generating travel insights. Please wait...");
 
         const prompt = `Act as an expert business analyst, economic strategist, Framer, Food reconmmander, Nutritionnist ,traveller and travel consultant. Analyze the following real-time weather data:  
 ${JSON.stringify(weatherData, null, 2)}.  
-
-  
 
 ### Travel Insights:   
    - Assess how the current weather conditions affect transportation, tourism, and outdoor activities**.  
@@ -78,8 +84,6 @@ ${JSON.stringify(weatherData, null, 2)}.
    - Provide **transportation options** for each location (e.g., public transport, car rentals, flights).  
    - Highlight **local accommodations** that are highly rated and suitable for the weather conditions.  
    - Suggest **unique experiences** that travelers can enjoy based on the weather (e.g., hot springs in cold weather, water sports in warm weather).  
-
-
 
 Ensure all insights are **realistic, location-specific, data-driven, and actionable** to provide practical value for businesses and travelers alike.`;
 
@@ -119,11 +123,13 @@ Ensure all insights are **realistic, location-specific, data-driven, and actiona
 
             // 📌 Process and split insights
             const insights = result.candidates[0]?.content?.parts[0]?.text?.split("\n\n") || [];
-
-            // setBusinessInsights(insights.slice(0, insights.length ));
             setTravelInsights(insights);
+            toast.success("Travel insights generated successfully!");
         } catch (error) {
             console.error("❌ Error generating insights:", error);
+            toast.error("Failed to generate insights. Please try again.");
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -131,15 +137,12 @@ Ensure all insights are **realistic, location-specific, data-driven, and actiona
         return text
             .replace(/\*\*(.*?)\*\*/g, (_, match) => `<strong>${match}</strong>`) // Make text bold
             .replace(/^- /gm, "")
-            .replace(/\s*\*\s*/g, ' ')   // Remove dashes at the beginning of lines
+            .replace(/\s*\*\s*/g, " ") // Remove dashes at the beginning of lines
             .replace(/^• /gm, " "); // Remove bullets if already converted
     };
 
-
-
-
     return (
-        <div className="p-6 w-auto mx-auto bg-gray-100 text-violet-900 rounded-xl shadow-lg space-y-6 flex flex-col items-center mt-10 ">
+        <div className="p-6 w-auto mx-auto bg-gray-100 text-violet-900 rounded-xl shadow-lg space-y-6 flex flex-col items-center mt-10">
             {/* 📌 Weather Display */}
             {weather && (
                 <>
@@ -192,16 +195,10 @@ Ensure all insights are **realistic, location-specific, data-driven, and actiona
                         </div>
                     </div>
                 </>
-
-
             )}
 
-
-
-
-
-
-            <div className="relative w-full h-[80vh] flex flex-col lg:flex-row items-center justify-center bg-gray-900 text-white rounded-lg">
+            {/* 📌 Explore Now Section */}
+            <div className="relative w-full h-[80vh] flex flex-col lg:flex-row items-center justify-center bg-gray-900 text-white rounded-xl">
                 {/* Left Side - Background Image */}
                 <div className="relative w-full lg:w-1/2 h-full bg-cover bg-center rounded-lg"
                     style={{
@@ -215,36 +212,42 @@ Ensure all insights are **realistic, location-specific, data-driven, and actiona
                     <h1 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-yellow-400 text-transparent bg-clip-text">
                         AI-Enabled Weather-Based Travel Suggestions
                     </h1>
-                    <p className="text-xl font-semibold ">
+                    <p className="text-xl font-semibold">
                         🌍 Plan smarter with <span className="">AI-powered weather insights!</span>
                     </p>
-                    <p className="text-lg ">
+                    <p className="text-lg">
                         ☀️🌧️ Get personalized travel & lifestyle tips— sunny adventures or cozy rainy retreats!
                     </p>
                     <p className="text-md font-medium">
                         🌟 Plan smarter. Experience more. Start your journey today! ✈️🌎
                     </p>
 
-                    <button className="px-6 py-3 mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105 transition transform rounded-lg shadow-lg font-semibold">
-                        Explore Now
+                    <button
+                        className="px-6 py-3 mt-4 bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105 transition transform rounded-lg shadow-lg font-semibold"
+                        onClick={() => generateInsights(weather)}
+                        disabled={isLoading}
+                    >
+                        {isLoading ? "Generating Insights..." : "Explore Now"}
                     </button>
                 </div>
             </div>
 
-
             {/* 📌 Travel Insights */}
-            <div className="bg-gray-900 text-white max-w-5xl p-4 rounded-lg  font-serif">
-                <h2 className="text text-2xl  font-bold flex items-center">
-                    ✈️Travel Insights
-                </h2>
-                <ul className="list-disc text-xl list-inside ">
-                    {travelInsights.map((insight, index) => (
-                        <li key={index} className="mt-2" dangerouslySetInnerHTML={{ __html: formatInsights(insight) }} />
-                    ))}
-                </ul>
-            </div>
+            {travelInsights.length > 0 && (
+                <div className="bg-gray-900 text-white max-w-5xl p-4 rounded-lg font-serif">
+                    <h2 className="text text-2xl font-bold flex items-center">
+                        <FaPlane className="mr-2" /> Travel Insights
+                    </h2>
+                    <ul className="list-disc text-xl list-inside">
+                        {travelInsights.map((insight, index) => (
+                            <li key={index} className="mt-2" dangerouslySetInnerHTML={{ __html: formatInsights(insight) }} />
+                        ))}
+                    </ul>
+                </div>
+            )}
 
-
+            {/* Toast Container */}
+            <ToastContainer position="bottom-right" autoClose={3000} />
         </div>
     );
 };

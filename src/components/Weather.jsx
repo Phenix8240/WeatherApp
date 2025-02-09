@@ -54,7 +54,8 @@ const Weather = () => {
     const [currentTime, setCurrentTime] = useState(""); // Indian Time
     const [localTime, setLocalTime] = useState(""); // Searched City's Local Time
     const [isIndianLocation, setIsIndianLocation] = useState(true);
-
+    const [timeInterval, setTimeInterval] = useState(null);
+    const [timeDiff,setTimeDiff]=useState(null)
     const allIcons = {
         "01d": clear_icon,
         "01n": clear_icon,
@@ -72,6 +73,24 @@ const Weather = () => {
         "13n": snow_icon,
     };
 
+    const getWeatherVideo = (weather, hour) => {
+        if (weather.includes("clear")) {
+            if (hour >= 6 && hour < 12) return weatherVideos.clear_morning;
+            if (hour >= 12 && hour < 18) return weatherVideos.clear_afternoon;
+            if (hour >= 18 && hour < 20) return weatherVideos.clear_evening;
+            return weatherVideos.clear_night;
+        } else if (weather.includes("cloud")) {
+            if (hour >= 6 && hour < 12) return weatherVideos.clouds_morning;
+            if (hour >= 12 && hour < 18) return weatherVideos.clouds_afternoon;
+            if (hour >= 18 && hour < 20) return weatherVideos.clouds_evening;
+            return weatherVideos.clouds_night;
+        } else if (weather.includes("rain")) {
+            return weatherVideos.rain;
+        } else if (weather.includes("snow")) {
+            return weatherVideos.snow;
+        }
+        return weatherVideos.default;
+    };
     const getTimeOfDay = () => {
         const hour = new Date().getHours();
 
@@ -103,6 +122,8 @@ const Weather = () => {
         const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${import.meta.env.VITE_APP_ID}`;
         const response = await fetch(url);
         const data = await response.json();
+        console.log(data);
+        
         return data.list[0]?.main?.aqi || "N/A";
     };
 
@@ -113,38 +134,79 @@ const Weather = () => {
         return data.list;
     };
 
-    const fetchLocalTime = async (countryCode) => {
+    const fetchLocalTime = (countryCode) => {
         try {
-            // Skip fetching local time for Indian locations
             if (countryCode === 'IN') {
                 setIsIndianLocation(true);
-                return null;
+                setLocalTime(""); // Reset local time for India
+                return;
             }
-            
+    
             setIsIndianLocation(false);
-            
             const timeZone = timeZones[countryCode] || 'UTC';
-            
-            // Instead of fetching time from API, we'll use the browser's built-in
-            // capabilities to continuously update the time
-            const time = new Date().toLocaleTimeString("en-GB", {
-                hour12: false,
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-                timeZone: timeZone
-            });
-            
-            return time;
+    
+            // Clear any existing interval to avoid multiple updates
+            if (timeInterval) {
+                clearInterval(timeInterval);
+            }
+    
+            const updateTime = () => {
+                const time = new Date().toLocaleTimeString("en-GB", {
+                    hour12: false,
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    timeZone: timeZone
+                });
+    
+                setLocalTime(time);
+            };
+    
+            // Update time immediately and set interval to update every second
+            updateTime();
+            const interval = setInterval(updateTime, 1000);
+            setTimeInterval(interval); // Store interval ID
+    
         } catch (error) {
             console.error("Error getting local time:", error);
+            setLocalTime("N/A");
+        }
+    };
+    
+    // Clean up interval when component unmounts or countryCode changes
+    useEffect(() => {
+        return () => {
+            if (timeInterval) {
+                clearInterval(timeInterval);
+            }
+        };
+    }, [timeInterval]);
+    
+    // Add this to your Weather component's state
+   
+    const calculateTimeDifference = (countryCode) => {
+        try {
+            const indianTimeZone = "Asia/Kolkata"; // IST (UTC+5:30)
+            const targetTimeZone = timeZones[countryCode] || "UTC"; // Default to UTC if unknown
+    
+            // Get the current time in IST and target time zone
+            const indianDate = new Date(new Date().toLocaleString("en-US", { timeZone: indianTimeZone }));
+            const targetDate = new Date(new Date().toLocaleString("en-US", { timeZone: targetTimeZone }));
+    
+            // Calculate time difference in minutes
+            let diffMinutes = Math.abs(Math.floor((targetDate - indianDate) / (1000 * 60))); // Always positive
+            let diffHours = Math.floor(diffMinutes / 60);
+            let remainingMinutes = diffMinutes % 60;
+    
+            // Format time difference as absolute value
+            return `${diffHours}h ${remainingMinutes}m`;
+        } catch (error) {
+            console.error("Error calculating time difference:", error);
             return "N/A";
         }
     };
     
-    // Add this to your Weather component's state
-    const [timeInterval, setTimeInterval] = useState(null);
-    
+
     // Modify your search function
     const searchTime = async (city) => {
         if (!city.trim()) {
@@ -168,10 +230,14 @@ const Weather = () => {
             }
     
             const countryCode = data.sys.country;
+            console.log(countryCode);
+            
             
             // Set up continuous time updates
             const newInterval = setInterval(async () => {
                 const localTimeValue = await fetchLocalTime(countryCode);
+                
+
                 setLocalTime(localTimeValue);
             }, 1000);
             
@@ -210,6 +276,9 @@ const Weather = () => {
             const countryCode = data.sys.country;
             const countryDetails = getCountryInfo(countryCode);
             const flagURL = getFlagURL(countryCode);
+            const timeDiff =await calculateTimeDifference(countryCode); // Example: USA
+            console.log("Time Difference from IST:", timeDiff);
+            setTimeDiff(timeDiff)
 
             // Fetch local time only for non-Indian locations
             const timezone = data.timezone / 3600; // Convert seconds to hours offset
@@ -219,7 +288,12 @@ const Weather = () => {
             // Fetch air quality and forecast
             const aqi = await fetchAirQuality(data.coord.lat, data.coord.lon);
             const forecast = await fetchForecast(city);
+            
 
+            const weatherDescription = data.weather[0].description.toLowerCase();
+            const hour = new Date().getHours();
+            setVideoSrc(getWeatherVideo(weatherDescription, hour));
+            setVideoKey(Date.now()); // Force video refresh
             setWeatherData({
                 humidity: data.main.humidity,
                 windSpeed: data.wind.speed,
@@ -308,6 +382,9 @@ const Weather = () => {
                                     <p className="font-semibold">
                                         🌎 {weatherData.location} Time: <span className="font-bold ml-2">{localTime}</span>
                                     </p>
+                                    <p className="font-semibold">
+                                        ⌛Time Difference: <span className="font-bold ml-2">{timeDiff}</span>
+                                    </p>
                                 </>
                             )}
                         </div>
@@ -362,7 +439,7 @@ const Weather = () => {
 
                     {/* 7-Day Forecast Section */}
                     <div className="forecast flex flex-col items-center gap-4 mt-6 w-full">
-                        <h1 className="text-2xl">5 Days Forecast</h1>
+                        <h1 className="text-2xl">Next 5 Days Forecast🧐</h1>
                         {weatherData.forecast.filter((_, index) => index % 8 === 0).map((day, index) => (
                             <div
                                 key={index}

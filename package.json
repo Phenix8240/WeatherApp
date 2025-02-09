@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
+  "build": "react-scripts build",
+  "start": "react-scripts start",
+  "predeploy": "npm run build",
+  "deploy": "vercel --prod"
+}
+,
   "dependencies": {
     "@google/generative-ai": "^0.17.1",
     "axios": "^1.7.5",

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Weather from './components/Weather';
 import LocationIntelligence from './components/LocationIntelligence';
 import BusinessFeatures from './components/BusinessFeatures';
@@ -15,9 +15,7 @@ const App = () => {
 
     return (
         <Router>
-            
-            <Navbar/>
-            {/* Routes */}
+            <Navbar />
             <Routes>
                 <Route path="/" element={<Weather />} />
                 <Route path="/location" element={<LocationIntelligence />} />

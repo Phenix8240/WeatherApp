@@ -13,7 +13,7 @@ const LocationIntelligence = () => {
   const API_KEY = import.meta.env.VITE_APP_ID;
 
   const indianCities = ["Srinagar","Delhi","Jaipur","Mumbai","Gangtok","Kolkata","Guwahati","Agartala","Bhubaneswar", "Bangalore", "Hyderabad", "Chennai"];
-  const worldCities = ["New York", "Moscow","London", "Tokyo", "Seoul", "Paris","Sydney", "Dubai"];
+  const worldCities = ["New York", "Moscow","London", "Tokyo", "Seoul", "Paris","Sydney","Berlin", "Dubai"];
   const [cityWeather, setCityWeather] = useState([]);
 
   useEffect(() => {

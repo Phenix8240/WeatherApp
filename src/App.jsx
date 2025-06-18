@@ -6,7 +6,7 @@ import BusinessFeatures from './components/BusinessFeatures';
 import Insights from './components/BusinessFeatures';
 import Navbar from './components/Navbar';
 import WeatherData from './components/WeatherData';
-import EarthDataDashboard from './components/SatelliteViewer';
+
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,7 +24,7 @@ const App = () => {
                 <Route path="/location" element={<LocationIntelligence />} />
                 <Route path="/business" element={<Insights />} />
                 <Route path="/data" element={<WeatherData />} />
-                <Route path="/sat" element={<EarthDataDashboard/>} />
+               
             </Routes>
         </Router>
     );

@@ -8,3 +8,4 @@ export default defineConfig({
         historyApiFallback: true, // Enable history API fallback
     },
 });
+

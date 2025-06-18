@@ -56,10 +56,13 @@ const Navbar = () => {
                         Weather
                     </Link>
                     <Link to="/location" className="text-black font-serif  hover:text-gray-800 font-semibold">
-                        Location Intelligence
+                        Region Reports
                     </Link>
                     <Link to="/business" className="text-black font-serif  hover:text-gray-800 font-semibold">
-                        Business Insights
+                        Travel Guide
+                    </Link>
+                    <Link to="/data" className="text-black font-serif  hover:text-gray-800 font-semibold">
+                       EcoPulse
                     </Link>
                 </div>
             </div>
@@ -78,14 +81,21 @@ const Navbar = () => {
                     className="block text-black font-serif  py-2 hover:bg-opacity-50"
                     onClick={toggleMenu}
                 >
-                    Location Intelligence
+                    Region Reports
                 </Link>
                 <Link
                     to="/business"
                     className="block text-black font-serif  py-2 hover:bg-opacity-50"
                     onClick={toggleMenu}
                 >
-                    Business Insights
+                    Travel Guide
+                </Link>
+                <Link
+                    to="/data"
+                    className="block text-black font-serif  py-2 hover:bg-opacity-50"
+                    onClick={toggleMenu}
+                >
+                    EcoPulse
                 </Link>
             </div>
         </nav>

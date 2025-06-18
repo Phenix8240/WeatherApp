@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Weather from './components/Weather';
 import LocationIntelligence from './components/LocationIntelligence';
 import BusinessFeatures from './components/BusinessFeatures';
 import Insights from './components/BusinessFeatures';
 import Navbar from './components/Navbar';
-
+import WeatherData from './components/WeatherData';
+import EarthDataDashboard from './components/SatelliteViewer';
 const App = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -15,11 +16,15 @@ const App = () => {
 
     return (
         <Router>
-            <Navbar />
+            
+            <Navbar/>
+            {/* Routes */}
             <Routes>
                 <Route path="/" element={<Weather />} />
                 <Route path="/location" element={<LocationIntelligence />} />
                 <Route path="/business" element={<Insights />} />
+                <Route path="/data" element={<WeatherData />} />
+                <Route path="/sat" element={<EarthDataDashboard/>} />
             </Routes>
         </Router>
     );

@@ -147,7 +147,34 @@ Ensure all insights are **realistic, location-specific, data-driven, and actiona
         // "50n": mist_night_icon,
 
 
+import React, { useState } from 'react';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Weather from './components/Weather';
+import LocationIntelligence from './components/LocationIntelligence';
+import BusinessFeatures from './components/BusinessFeatures';
+import Insights from './components/BusinessFeatures';
+import Navbar from './components/Navbar';
 
+const App = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    return (
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<Weather />} />
+                <Route path="/location" element={<LocationIntelligence />} />
+                <Route path="/business" element={<Insights />} />
+            </Routes>
+        </Router>
+    );
+};
+
+export default App;
 
 
 import React, { useEffect, useRef, useState } from 'react';
@@ -339,3 +366,202 @@ const Weather = () => {
 };
 
 export default Weather;
+
+
+
+
+import React, { useState, useEffect } from "react";
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+
+const WeatherData = () => {
+    const [coords, setCoords] = useState(null);
+    const [data, setData] = useState({
+        currentWeather: null,
+        forecast: null,
+        airPollution: null,
+        uvi: null
+    });
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const API_KEY = import.meta.env.VITE_APP_ID;
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setCoords({
+                    lat: position.coords.latitude,
+                    lon: position.coords.longitude
+                });
+            },
+            (err) => {
+                setError("Location permission denied. Enable location for accurate data.");
+                setLoading(false);
+            }
+        );
+    }, []);
+
+    useEffect(() => {
+        if (!coords) return;
+
+        const fetchWeatherData = async () => {
+            setLoading(true);
+            try {
+                const { lat, lon } = coords;
+
+                const currentWeather = fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+                ).then((res) => res.json());
+
+                const forecast = fetch(
+                    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+                ).then((res) => res.json());
+
+                const airPollution = fetch(
+                    `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+                ).then((res) => res.json());
+
+                const uvi = fetch(
+                    `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${API_KEY}`
+                ).then((res) => res.json());
+
+                const [weather, forecastData, airQuality, uvData] = await Promise.all([
+                    currentWeather,
+                    forecast,
+                    airPollution,
+                    uvi
+                ]);
+
+                setData({
+                    currentWeather: weather,
+                    forecast: forecastData,
+                    airPollution: airQuality,
+                    uvi: uvData
+                });
+            } catch (err) {
+                setError("Failed to fetch weather data. Check API keys and requests.");
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchWeatherData();
+    }, [coords]);
+
+    // Calculate AQI
+    const calculateAQI = (components) => {
+        const { co, no2, o3, so2, pm2_5, pm10 } = components;
+        const aqi = (co + no2 + o3 + so2 + pm2_5 + pm10) / 6;
+        return Math.round(aqi);
+    };
+
+    // Calculate Pollutant Contribution (%)
+    const calculatePollutantContribution = (components) => {
+        const total = Object.values(components).reduce((sum, value) => sum + value, 0);
+        return Object.keys(components).map((key) => ({
+            name: key.toUpperCase(),
+            value: ((components[key] / total) * 100).toFixed(2)
+        }));
+    };
+
+    // Calculate Health Risk Level
+    const calculateHealthRisk = (pm2_5, pm10) => {
+        if (pm2_5 <= 12 && pm10 <= 54) return "Good (0-50)";
+        if (pm2_5 <= 35 && pm10 <= 154) return "Moderate (51-100)";
+        if (pm2_5 <= 55 && pm10 <= 254) return "Unhealthy (101-150)";
+        if (pm2_5 <= 150 && pm10 <= 354) return "Very Unhealthy (151-200)";
+        return "Hazardous (>200)";
+    };
+
+    if (loading) return <p className="text-center text-lg">Loading weather data...</p>;
+    if (error) return <p className="text-center text-red-500">Error: {error}</p>;
+
+    const airComponents = data.airPollution?.list[0]?.components || {};
+    const airData = Object.keys(airComponents).map((key) => ({
+        name: key.toUpperCase(),
+        value: airComponents[key]
+    }));
+
+    const pollutantContribution = calculatePollutantContribution(airComponents);
+    const aqi = calculateAQI(airComponents);
+    const healthRisk = calculateHealthRisk(airComponents.pm2_5, airComponents.pm10);
+
+    const COLORS = ["#ff0000", "#ff7300", "#ffbf00", "#ffff00", "#99ff00", "#00ff00", "#00ffff", "#0073ff"];
+
+    return (
+        <div className="max-w-5xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+            {/* Current Weather */}
+            <div className="bg-blue-600 text-white p-6 rounded-xl shadow-lg">
+                <h3 className="text-xl font-bold mb-2">🌦 Current Weather</h3>
+                <p>🌡 Temperature: {data.currentWeather?.main?.temp}°C</p>
+                <p>🤒 Feels Like: {data.currentWeather?.main?.feels_like}°C</p>
+                <p>💧 Humidity: {data.currentWeather?.main?.humidity}%</p>
+                <p>☁ Condition: {data.currentWeather?.weather[0]?.description}</p>
+            </div>
+
+            {/* UV Index */}
+            <div className="bg-purple-600 text-white p-6 rounded-xl shadow-lg">
+                <h3 className="text-xl font-bold mb-2">☀ UV Index</h3>
+                <p>{data.uvi?.value}</p>
+            </div>
+
+            {/* Air Quality Insights */}
+            <div className="col-span-1 md:col-span-2 bg-white p-6 rounded-xl shadow-lg">
+                <h3 className="text-lg font-bold text-center mb-4">📊 Air Quality Insights</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    <div className="bg-green-100 p-4 rounded-lg">
+                        <p className="font-bold">🌍 AQI</p>
+                        <p>{aqi}</p>
+                    </div>
+                    <div className="bg-yellow-100 p-4 rounded-lg">
+                        <p className="font-bold">⚠️ Health Risk</p>
+                        <p>{healthRisk}</p>
+                    </div>
+                    <div className="bg-red-100 p-4 rounded-lg">
+                        <p className="font-bold">📈 Pollutant Contribution</p>
+                        <ul>
+                            {pollutantContribution.map((item, index) => (
+                                <li key={index}>{item.name}: {item.value}%</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
+
+                {/* Pie Chart for Air Quality */}
+                <ResponsiveContainer width="100%" height={300}>
+                    <PieChart>
+                        <Pie
+                            data={airData}
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={120}
+                            dataKey="value"
+                            label={({ name, value }) => `${name}: ${value}`}
+                            labelLine={false}
+                        >
+                            {airData.map((entry, index) => (
+                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                        </Pie>
+                        <Tooltip />
+                    </PieChart>
+                </ResponsiveContainer>
+            </div>
+
+            {/* 7-Day Forecast */}
+            <div className="col-span-1 md:col-span-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {data.forecast?.list?.slice(0, 7).map((item, index) => (
+                    <div key={index} className="bg-green-600 text-white p-6 rounded-xl shadow-lg">
+                        <p className="font-bold">📅 {new Date(item.dt * 1000).toLocaleDateString()}</p>
+                        <p>🌡 Temp: {item.main.temp}°C</p>
+                        <p>☁ Condition: {item.weather[0].description}</p>
+                        <p>💧 Humidity: {item.main.humidity}%</p>
+                        <p>💨 Wind: {item.wind.speed} m/s</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+export default WeatherData;

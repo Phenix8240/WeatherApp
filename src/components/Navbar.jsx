@@ -26,7 +26,7 @@ const Navbar = () => {
                         display: "inline-block",
                     }}
                 >
-                   Weathero
+                   SkyRecon
                 </Link>
 
                 {/* Hamburger Menu (Mobile) */}

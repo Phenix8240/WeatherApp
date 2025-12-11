@@ -20,7 +20,7 @@ const WeatherData = () => {
     const [locationDenied, setLocationDenied] = useState(false);
 
     const API_KEY = import.meta.env.VITE_APP_ID;
-    const GEMINI_API_KEY = "AIzaSyCGaiXt_OsH8HD1D-H_P25dBMm9QBp0UgY";
+    const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
     useEffect(() => {
         const getLocation = () => {
